@@ -1,9 +1,7 @@
 import { Header, Image, createStyles } from '@mantine/core';
-// import { ColorSchemeToggle } from "../../ColorSchemeToggle";
 import Link from 'next/link';
 import VariantToggle from '../../global/Common/VariantToggle';
 import { ColorSchemeToggle } from '../../ColorSchemeToggle/ColorSchemeToggle';
-// import Link from 'next/link';
 
 const HEADER_HEIGHT = 90;
 
@@ -31,20 +29,20 @@ export default function NavigationHeaderVariantA() {
   return (
     <div className="fixed top-0 z-[100] w-full">
       <Header height={HEADER_HEIGHT} className={`${classes.root} !border-b-0`}>
-        <div className="flex justify-between items-center h-full mx-5 lg:mx-10">
+        <div className="flex justify-between items-center h-full w-full mx-5 lg:mx-10">
           <div className="">
             <Link href="/" passHref>
               <Image
                 alt="logo"
                 height={25}
-                src="/variantB/assets/images/logoTransport.jpeg"
+                src="/favicon.svg"
               />
             </Link>
           </div>
           <div className="flex justify-end items-center text-sm">
             <VariantToggle />
-            <div className="flex justify-start items-center mb-6 mr-4">
-              <ColorSchemeToggle />asdf
+            <div className="flex justify-start items-center mb-2 mr-12">
+              <ColorSchemeToggle />
             </div>
           </div>
         </div>
