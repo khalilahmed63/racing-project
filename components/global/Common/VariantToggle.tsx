@@ -16,7 +16,6 @@ export default function VariantToggle() {
             <Radio value="B" label="" />
           </Group>
         </Radio.Group> */}
-        variant toggler
       </div>
     </>
   );
