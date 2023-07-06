@@ -2,6 +2,7 @@ import { ColorSchemeToggle } from "../Common/ColorSchemeToggle";
 import { Header, createStyles } from "@mantine/core";
 import VariantToggle from "../Common/VariantToggle";
 import Link from "next/link";
+import Image from "next/image";
 
 
 const HEADER_HEIGHT = 90;
@@ -33,7 +34,12 @@ export default function NavigationHeaderVariant(props:any) {
         <div className="flex justify-between items-center h-full w-full mx-5 lg:mx-10">
           <div className="">
             <Link href="/" passHref>
-              
+            <Image
+                alt="logo"
+                height={35}
+                width={35}
+                src="/Logo.png"
+              />
             </Link>
           </div>
           <div className="flex justify-end items-center text-sm">
