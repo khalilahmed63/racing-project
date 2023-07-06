@@ -6,6 +6,7 @@ import { MantineProvider, ColorScheme, ColorSchemeProvider, Header } from '@mant
 import { Notifications } from '@mantine/notifications';
 import './globals.css';
 import NavigationHeaderVariant from '../components/global/Header/Header';
+import Home from '../components/global/Home/Home';
 
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
@@ -34,7 +35,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           <Notifications />
         </MantineProvider>
       </ColorSchemeProvider>
+      <Home/>
     </>
+
   );
 }
 
