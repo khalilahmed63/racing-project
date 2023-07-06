@@ -12,7 +12,9 @@ export default function Home() {
 
   const fetchRecord = async () => {
     try {
-      const response = await axios.get(`${fetchRecordsAPI}?page=${page}`);
+      const response = await axios.get(
+        'https://racingmike.com/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&eventid=8ed52491-e1aa-49a9-8d70-f1c1f8dd3090&categoryid=e8c110ad-64aa-4e8e-8a86-f2f152f6a942&session=RAC'
+      );
       setRecord(response?.data);
       console.log(response, response);
     } catch (error) {
@@ -41,11 +43,7 @@ export default function Home() {
           {record?.map((item: any) => (
             <tr key={item.id}>
               <td>{item.body}</td>
-              {roll === 'admin' ? (
-                <td>{item.email}</td>
-              ) : (
-                <td>*********{item.email.slice(item.email.indexOf('@') + 1)}</td>
-              )}
+              <td>{item.email}</td>
               <td>{item.id}</td>
               <td>{item.name}</td>
               <td>{item.post_id}</td>
