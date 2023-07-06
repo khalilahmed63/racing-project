@@ -1,27 +1,14 @@
-import { useEffect, useState } from "react";
-import { Button, Table } from "@mantine/core";
-import axios from "axios";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useState } from 'react';
+import { Button, Table } from '@mantine/core';
+import axios from 'axios';
 
-
-
-export default function Home(props: any){
+export default function Home() {
   const fetchRecordsAPI = process.env.REACT_APP_API_RECORDS;
 
   const [record, setRecord] = useState<any>([]);
   const [page, setPage] = useState<any>(1);
-  const [roll, setRoll] = useState<any>("admin");
-
-  let obj = { name: "khalil" };
-  let obj2 = obj;
-  obj2.name = "ahmed";
-
-  const myGreeting = () => {
-    alert(obj.name);
-  };
-
-  const myTimeout = setTimeout(myGreeting, 3000);
-
-  clearTimeout(myTimeout);
+  const [roll, setRoll] = useState<any>('admin');
 
   const fetchRecord = async () => {
     try {
@@ -54,10 +41,10 @@ export default function Home(props: any){
           {record?.map((item: any) => (
             <tr key={item.id}>
               <td>{item.body}</td>
-              {roll === "admin" ? (
+              {roll === 'admin' ? (
                 <td>{item.email}</td>
               ) : (
-                <td>*********{item.email.slice(item.email.indexOf("@")+1)}</td>
+                <td>*********{item.email.slice(item.email.indexOf('@') + 1)}</td>
               )}
               <td>{item.id}</td>
               <td>{item.name}</td>
