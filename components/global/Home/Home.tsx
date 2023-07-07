@@ -122,8 +122,9 @@ export default function Home() {
   }, [page, category, event, session]);
 
   return (
-    <div className="max-w-screen-lg mx-auto">
-      <div className="flex justify-center gap-5 pt-24 mb-10 ">
+    <div className="max-w-screen-lg mx-auto  pt-24">
+      <h1 className="text-2xl font-bold text-center mb-2">MOTOGP RACE RESULT</h1>
+      <div className="flex justify-center gap-5 mb-10 ">
         <Select
           label="Year"
           placeholder="Select year"
@@ -195,7 +196,7 @@ export default function Home() {
               ))}
             </tbody>
           </Table>
-          <div className="flex justify-center items-center mt-2">
+          {/* <div className="flex justify-center items-center mt-2">
             <Button
               variant="default"
               disabled={page <= 1}
@@ -215,7 +216,7 @@ export default function Home() {
             >
               Next
             </Button>
-          </div>
+          </div> */}
         </div>
       ) : (
         <div className="flex justify-center items-center pt-10">

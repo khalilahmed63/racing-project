@@ -1,45 +1,108 @@
-import { Header, createStyles } from '@mantine/core';
+import { Autocomplete, Group, Header, Image, createStyles, rem } from '@mantine/core';
 import Link from 'next/link';
-import Image from 'next/image';
+import { IconSearch } from 'tabler-icons';
 import { ColorSchemeToggle } from '../Common/ColorSchemeToggle';
 
-const HEADER_HEIGHT = 70;
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const useStyles = createStyles((theme) => ({
-  root: {
-    position: 'relative',
-    zIndex: 1,
-    backgroundColor: '#22272B',
+  header: {
+    paddingLeft: theme.spacing.md,
+    paddingRight: theme.spacing.md,
   },
 
-  header: {
-    position: 'sticky',
+  inner: {
+    height: rem(56),
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: '100%',
-    borderBottom: '0px',
+  },
+
+  links: {
+    [theme.fn.smallerThan('md')]: {
+      display: 'none',
+    },
+  },
+
+  search: {
+    [theme.fn.smallerThan('xs')]: {
+      display: 'none',
+    },
+  },
+
+  link: {
+    display: 'block',
+    lineHeight: 1,
+    padding: `${rem(8)} ${rem(12)}`,
+    borderRadius: theme.radius.sm,
+    textDecoration: 'none',
+    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
+
+    '&:hover': {
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    },
   },
 }));
 
-export default function NavigationHeaderVariant() {
+export default function NavigationHeader() {
   const { classes } = useStyles();
+
+  const links = [
+    {
+      label: 'OpenAI',
+      link: 'https://openai.com',
+    },
+    {
+      label: 'GitHub',
+      link: 'https://github.com',
+    },
+    {
+      label: 'Google',
+      link: 'https://www.google.com',
+    },
+    {
+      label: 'Wikipedia',
+      link: 'https://www.wikipedia.org',
+    },
+  ];
+
+  const items = links.map((link) => (
+    <a
+      key={link.label}
+      href={link.link}
+      className={classes.link}
+      onClick={(event) => event.preventDefault()}
+    >
+      {link.label}
+    </a>
+  ));
 
   return (
     <div className="fixed top-0 z-[100] w-full">
-      <Header height={HEADER_HEIGHT} className={`${classes.root} !border-b-0`}>
-        <div className="flex justify-between items-center h-full w-full mx-5 lg:mx-10">
-          <div className="">
+      <Header height={56} className={classes.header} mb={120}>
+        <div className={classes.inner}>
+          <Group>
             <Link href="/" passHref>
-              <Image alt="logo" height={35} width={35} src="/Logo.png" />
+              <Image alt="logo" height={25} src="/favicon.svg" />
             </Link>
-          </div>
-          <div className="flex justify-end items-center text-sm">
-            <div className="flex justify-start items-center mb-2 mr-12">
+          </Group>
+
+          <Group>
+            <Group ml={50} spacing={5} className={classes.links}>
+              {items}
+            </Group>
+            <Autocomplete
+              className={classes.search}
+              placeholder="Search"
+              icon={<IconSearch size="1rem" stroke={1.5} />}
+              data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
+            />
+          </Group>
+          <Group>
+            <div className="mb-6">
               <ColorSchemeToggle />
             </div>
-          </div>
+          </Group>
         </div>
       </Header>
     </div>
