@@ -9,13 +9,12 @@ export default function Home() {
   const [record, setRecord] = useState<any>([]);
   const [page, setPage] = useState<any>(1);
   const [roll, setRoll] = useState<any>('admin');
- 
+
   const [searchValue, onSearchChange] = useState('');
 
   const fetchRecord = async () => {
     try {
-      const response = await axios.get(`${fetchRecordsAPI}?=${page}`
-      );
+      const response = await axios.get(`${fetchRecordsAPI}?=${page}`);
       setRecord(response?.data);
       console.log(response, response);
     } catch (error) {
@@ -27,63 +26,58 @@ export default function Home() {
     fetchRecord();
   }, [page]);
 
-
-  
-
   return (
-    <div className='max-w-screen-lg mx-auto'>
+    <div className="max-w-screen-lg mx-auto">
       <div className=" flex justify-center gap-5 py-48 ">
-      <Select
-      label="SEASON
-      List year from 1950 to 2023"
-      placeholder="Pick one"
-      searchable
-      onSearchChange={onSearchChange}
-      searchValue={searchValue}
-      nothingFound="No options"
-      data={['React', 'Angular', 'Svelte', 'Vue']}
-    />
         <Select
-      label="EVENT"
-      placeholder="Pick one"
-      searchable
-      onSearchChange={onSearchChange}
-      searchValue={searchValue}
-      nothingFound="No options"
-      data={['React', 'Angular', 'Svelte', 'Vue']}
-    />
+          label="SEASON"
+          placeholder="Pick one"
+          searchable
+          onSearchChange={onSearchChange}
+          searchValue={searchValue}
+          nothingFound="No options"
+          data={['React', 'Angular', 'Svelte', 'Vue']}
+        />
         <Select
-      label="Category"
-      placeholder="Pick one"
-      searchable
-      onSearchChange={onSearchChange}
-      searchValue={searchValue}
-      nothingFound="No options"
-      data={['React', 'Angular', 'Svelte', 'Vue']}
-    />
+          label="EVENT"
+          placeholder="Pick one"
+          searchable
+          onSearchChange={onSearchChange}
+          searchValue={searchValue}
+          nothingFound="No options"
+          data={['React', 'Angular', 'Svelte', 'Vue']}
+        />
         <Select
-      label="Sessions"
-      placeholder="Pick one"
-      searchable
-      onSearchChange={onSearchChange}
-      searchValue={searchValue}
-      nothingFound="No options"
-      data={['React', 'Angular', 'Svelte', 'Vue']}
-    />
-            </div>
-      <Table striped highlightOnHover className='border-collapse border border-black'>
-        <thead className='my-4'>
+          label="Category"
+          placeholder="Pick one"
+          searchable
+          onSearchChange={onSearchChange}
+          searchValue={searchValue}
+          nothingFound="No options"
+          data={['React', 'Angular', 'Svelte', 'Vue']}
+        />
+        <Select
+          label="Sessions"
+          placeholder="Pick one"
+          searchable
+          onSearchChange={onSearchChange}
+          searchValue={searchValue}
+          nothingFound="No options"
+          data={['React', 'Angular', 'Svelte', 'Vue']}
+        />
+      </div>
+      <Table striped highlightOnHover className="border-collapse border border-black">
+        <thead className="my-4">
           <tr>
-            <th className='border border-black'></th>
-            <th className='border border-black'>POS</th>
-            <th className='border border-black'>POINTS</th>
-            <th className='border border-black'>RIDER</th>
-            <th className='border border-black'>NATION</th>
-            <th className='border border-black'>TEAM</th>
-            <th className='border border-black'>BIKE</th>
-            <th className='border border-black'>KM.h</th>
-            <th className='border border-black'>TIME/GAP</th>
-
+            <th className="border border-black"></th>
+            <th className="border border-black">POS</th>
+            <th className="border border-black">POINTS</th>
+            <th className="border border-black">RIDER</th>
+            <th className="border border-black">NATION</th>
+            <th className="border border-black">TEAM</th>
+            <th className="border border-black">BIKE</th>
+            <th className="border border-black">KM.h</th>
+            <th className="border border-black">TIME/GAP</th>
           </tr>
         </thead>
         <tbody>
