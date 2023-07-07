@@ -9,7 +9,17 @@ export default function Home() {
   const [record, setRecord] = useState<any>([]);
   const [page, setPage] = useState<any>(1);
   const [roll, setRoll] = useState<any>('admin');
+  const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
 
+  const startYear = new Date().getFullYear();
+  const endYear = startYear - 73;
+  const years = Array.from({ length: startYear - endYear + 1 }, (_, index) =>
+    (startYear - index).toString()
+  );
+
+  const handleYearChange = (value: string) => {
+    setSelectedYear(value);
+  };
   const [searchValue, onSearchChange] = useState('');
 
   const fetchRecord = async () => {
@@ -30,13 +40,11 @@ export default function Home() {
     <div className="max-w-screen-lg mx-auto">
       <div className=" flex justify-center gap-5 py-48 ">
         <Select
-          label="SEASON"
-          placeholder="Pick one"
-          searchable
-          onSearchChange={onSearchChange}
-          searchValue={searchValue}
-          nothingFound="No options"
-          data={['React', 'Angular', 'Svelte', 'Vue']}
+          label="Year"
+          placeholder="Select year"
+          value={selectedYear}
+          onChange={handleYearChange}
+          data={years.map((year) => ({ value: year, label: year }))}
         />
         <Select
           label="EVENT"
