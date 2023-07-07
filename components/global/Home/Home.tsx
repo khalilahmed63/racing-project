@@ -4,7 +4,9 @@ import { Button, Table } from '@mantine/core';
 import axios from 'axios';
 
 export default function Home() {
-  const fetchRecordsAPI = process.env.REACT_APP_API_RECORDS;
+  // const fetchRecordsAPI = process.env.REACT_APP_API_RECORDS;
+  const fetchRecordsAPI =
+    'https://racingmike.com/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&eventid=8ed52491-e1aa-49a9-8d70-f1c1f8dd3090&categoryid=e8c110ad-64aa-4e8e-8a86-f2f152f6a942&session=RAC';
 
   const [record, setRecord] = useState<any>([]);
   const [page, setPage] = useState<any>(1);
@@ -12,8 +14,7 @@ export default function Home() {
 
   const fetchRecord = async () => {
     try {
-      const response = await axios.get(`${fetchRecordsAPI}?=${page}`
-      );
+      const response = await axios.get(`${fetchRecordsAPI}?=${page}`);
       setRecord(response?.data);
       console.log(response, response);
     } catch (error) {
@@ -26,20 +27,19 @@ export default function Home() {
   }, [page]);
 
   return (
-    <div className='max-w-screen-lg mx-auto'>
-      <h1 className="py-40 text-2xl text-center p-4">Record with Pagination</h1>
+    <div className="max-w-screen-lg mx-auto mt-32">
+      {/* <h1 className="py-40 text-2xl text-center p-4">Record with Pagination</h1> */}
       <Table striped highlightOnHover>
-        <thead className='my-4'>
+        <thead className="my-4">
           <tr className="">
-            <th className='border-2 border-black rounded'>POS</th>
-            <th className='border-2 border-black rounded'>POINTS</th>
-            <th className='border-2 border-black rounded'>RIDER</th>
-            <th className='border-2 border-black rounded'>NATION</th>
-            <th className='border-2 border-black rounded'>TEAM</th>
-            <th className='border-2 border-black rounded'>BIKE</th>
-            <th className='border-2 border-black rounded'>KM.h</th>
-            <th className='border-2 border-black rounded'>TIME/GAP</th>
-
+            <th className="border-2 border-black rounded">POS</th>
+            <th className="border-2 border-black rounded">POINTS</th>
+            <th className="border-2 border-black rounded">RIDER</th>
+            <th className="border-2 border-black rounded">NATION</th>
+            <th className="border-2 border-black rounded">TEAM</th>
+            <th className="border-2 border-black rounded">BIKE</th>
+            <th className="border-2 border-black rounded">KM.h</th>
+            <th className="border-2 border-black rounded">TIME/GAP</th>
           </tr>
         </thead>
         <tbody>
