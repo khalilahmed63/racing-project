@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
-import { Button, Table } from '@mantine/core';
+import { Button, MultiSelect, Select, Table } from '@mantine/core';
 import axios from 'axios';
 
 export default function Home() {
@@ -11,9 +11,22 @@ export default function Home() {
   const [record, setRecord] = useState<any>([]);
   const [page, setPage] = useState<any>(1);
   const [roll, setRoll] = useState<any>('admin');
+  const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
+
+  const startYear = new Date().getFullYear();
+  const endYear = startYear - 73;
+  const years = Array.from({ length: startYear - endYear + 1 }, (_, index) =>
+    (startYear - index).toString()
+  );
+
+  const handleYearChange = (value: string) => {
+    setSelectedYear(value);
+  };
+  const [searchValue, onSearchChange] = useState('');
 
   const fetchRecord = async () => {
     try {
+      const response = await axios.get(`${fetchRecordsAPI}?=${page}`);
       const response = await axios.get(`${fetchRecordsAPI}?=${page}`);
       setRecord(response?.data);
       console.log(response, response);
@@ -27,19 +40,54 @@ export default function Home() {
   }, [page]);
 
   return (
-    <div className="max-w-screen-lg mx-auto mt-32">
-      {/* <h1 className="py-40 text-2xl text-center p-4">Record with Pagination</h1> */}
-      <Table striped highlightOnHover>
+    <div className="max-w-screen-lg mx-auto">
+      <div className=" flex justify-center gap-5 py-48 ">
+        <Select
+          label="Year"
+          placeholder="Select year"
+          value={selectedYear}
+          onChange={handleYearChange}
+          data={years.map((year) => ({ value: year, label: year }))}
+        />
+        <Select
+          label="EVENT"
+          placeholder="Pick one"
+          searchable
+          onSearchChange={onSearchChange}
+          searchValue={searchValue}
+          nothingFound="No options"
+          data={['React', 'Angular', 'Svelte', 'Vue']}
+        />
+        <Select
+          label="Category"
+          placeholder="Pick one"
+          searchable
+          onSearchChange={onSearchChange}
+          searchValue={searchValue}
+          nothingFound="No options"
+          data={['React', 'Angular', 'Svelte', 'Vue']}
+        />
+        <Select
+          label="Sessions"
+          placeholder="Pick one"
+          searchable
+          onSearchChange={onSearchChange}
+          searchValue={searchValue}
+          nothingFound="No options"
+          data={['React', 'Angular', 'Svelte', 'Vue']}
+        />
+      </div>
+      <Table striped highlightOnHover className="border-collapse border border-black">
         <thead className="my-4">
-          <tr className="">
-            <th className="border-2 border-black rounded">POS</th>
-            <th className="border-2 border-black rounded">POINTS</th>
-            <th className="border-2 border-black rounded">RIDER</th>
-            <th className="border-2 border-black rounded">NATION</th>
-            <th className="border-2 border-black rounded">TEAM</th>
-            <th className="border-2 border-black rounded">BIKE</th>
-            <th className="border-2 border-black rounded">KM.h</th>
-            <th className="border-2 border-black rounded">TIME/GAP</th>
+          <tr>
+            <th className="border border-black">POS</th>
+            <th className="border border-black">POINTS</th>
+            <th className="border border-black">RIDER</th>
+            <th className="border border-black">NATION</th>
+            <th className="border border-black">TEAM</th>
+            <th className="border border-black">BIKE</th>
+            <th className="border border-black">KM.h</th>
+            <th className="border border-black">TIME/GAP</th>
           </tr>
         </thead>
         <tbody>
