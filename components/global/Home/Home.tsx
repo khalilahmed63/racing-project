@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
-import { Button, Table } from '@mantine/core';
+import { Button, MultiSelect, Select, Table } from '@mantine/core';
 import axios from 'axios';
 
 export default function Home() {
@@ -9,6 +9,8 @@ export default function Home() {
   const [record, setRecord] = useState<any>([]);
   const [page, setPage] = useState<any>(1);
   const [roll, setRoll] = useState<any>('admin');
+ 
+  const [searchValue, onSearchChange] = useState('');
 
   const fetchRecord = async () => {
     try {
@@ -25,9 +27,50 @@ export default function Home() {
     fetchRecord();
   }, [page]);
 
+
+  
+
   return (
     <div className='max-w-screen-lg mx-auto'>
-      <h1 className="py-40 text-2xl text-center p-4">Record with Pagination</h1>
+      <div className=" flex justify-center gap-5 py-48 ">
+      <Select
+      label="SEASON
+      List year from 1950 to 2023"
+      placeholder="Pick one"
+      searchable
+      onSearchChange={onSearchChange}
+      searchValue={searchValue}
+      nothingFound="No options"
+      data={['React', 'Angular', 'Svelte', 'Vue']}
+    />
+        <Select
+      label="EVENT"
+      placeholder="Pick one"
+      searchable
+      onSearchChange={onSearchChange}
+      searchValue={searchValue}
+      nothingFound="No options"
+      data={['React', 'Angular', 'Svelte', 'Vue']}
+    />
+        <Select
+      label="Category"
+      placeholder="Pick one"
+      searchable
+      onSearchChange={onSearchChange}
+      searchValue={searchValue}
+      nothingFound="No options"
+      data={['React', 'Angular', 'Svelte', 'Vue']}
+    />
+        <Select
+      label="Sessions"
+      placeholder="Pick one"
+      searchable
+      onSearchChange={onSearchChange}
+      searchValue={searchValue}
+      nothingFound="No options"
+      data={['React', 'Angular', 'Svelte', 'Vue']}
+    />
+            </div>
       <Table striped highlightOnHover className='border-collapse border border-black'>
         <thead className='my-4'>
           <tr>
