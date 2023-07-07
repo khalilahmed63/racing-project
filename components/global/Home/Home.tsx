@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
-import { Box, Button, LoadingOverlay, MultiSelect, Select, Table } from '@mantine/core';
+import { Box, Button, Loader, LoadingOverlay, MultiSelect, Select, Table } from '@mantine/core';
 import axios from 'axios';
 
 export default function Home() {
@@ -119,12 +119,11 @@ export default function Home() {
 
   useEffect(() => {
     fetchRecord();
-    console.log('fetch');
   }, [page, category, event, session]);
 
   return (
     <div className="max-w-screen-lg mx-auto">
-      <div className=" flex justify-center gap-5 pt-24 mb-10 ">
+      <div className="flex justify-center gap-5 pt-24 mb-10 ">
         <Select
           label="Year"
           placeholder="Select year"
@@ -164,12 +163,9 @@ export default function Home() {
           data={sessionList}
         />
       </div>
-      {/* {!loading ? ( */}
-      <Box pos="relative">
-        <LoadingOverlay visible={loading} overlayBlur={2} />
-        {/* ...other content */}
-        <div className="w-full max-h-96">
-          <Table striped highlightOnHover className="">
+      {!loading ? (
+        <div className="w-full ">
+          <Table striped highlightOnHover className="max-h-96">
             <thead className="my-4">
               <tr>
                 <th className="">POS</th>
@@ -185,7 +181,7 @@ export default function Home() {
             <tbody>
               {record?.map((item: any) => (
                 <tr key={item.id}>
-                  <td>{item.email}</td>
+                  <td>{item.classification_position}</td>
                   <td>{item.points}</td>
                   <td>{item.classification_rider_full_name}</td>
                   <td>{item.name}</td>
@@ -221,10 +217,11 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </Box>
-      {/* ) : (
-        'loading...'
-      )} */}
+      ) : (
+        <div className="flex justify-center items-center pt-10">
+          <Loader size="xl" />
+        </div>
+      )}
     </div>
   );
 }
