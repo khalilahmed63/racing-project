@@ -4,8 +4,13 @@ import { Box, Button, Loader, LoadingOverlay, MultiSelect, Select, Table } from 
 import axios from 'axios';
 
 export default function Home() {
-  const fetchRecordsAPI =
-    'https://racingmike.com/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&eventid=8ed52491-e1aa-49a9-8d70-f1c1f8dd3090&categoryid=e8c110ad-64aa-4e8e-8a86-f2f152f6a942&session=RAC';
+  const [category, setCategory] = useState('');
+  const [event, setEvent] = useState('');
+  const [session, setSession] = useState('');
+
+  const fetchRecordsAPI = `https://racingmike.com/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&eventid=${
+    event || '8ed52491-e1aa-49a9-8d70-f1c1f8dd3090'
+  }&categoryid=${category || 'e8c110ad-64aa-4e8e-8a86-f2f152f6a942'}&session=${session || 'RAC'}`;
 
   const [record, setRecord] = useState<any>([]);
   const [categories, setCategories] = useState<any>([]);
@@ -24,9 +29,6 @@ export default function Home() {
   const handleYearChange = (value: string) => {
     setSelectedYear(value);
   };
-  const [category, setCategory] = useState('');
-  const [event, setEvent] = useState('');
-  const [session, setSession] = useState('');
 
   const fetchRecord = async () => {
     setLoading(true);
