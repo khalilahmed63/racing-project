@@ -28,17 +28,18 @@ export default function Home() {
   return (
     <div className='max-w-screen-lg mx-auto'>
       <h1 className="py-40 text-2xl text-center p-4">Record with Pagination</h1>
-      <Table striped highlightOnHover>
+      <Table striped highlightOnHover className='border-collapse border border-black'>
         <thead className='my-4'>
-          <tr className="">
-            <th className='border-2 border-black rounded'>POS</th>
-            <th className='border-2 border-black rounded'>POINTS</th>
-            <th className='border-2 border-black rounded'>RIDER</th>
-            <th className='border-2 border-black rounded'>NATION</th>
-            <th className='border-2 border-black rounded'>TEAM</th>
-            <th className='border-2 border-black rounded'>BIKE</th>
-            <th className='border-2 border-black rounded'>KM.h</th>
-            <th className='border-2 border-black rounded'>TIME/GAP</th>
+          <tr>
+            <th className='border border-black'></th>
+            <th className='border border-black'>POS</th>
+            <th className='border border-black'>POINTS</th>
+            <th className='border border-black'>RIDER</th>
+            <th className='border border-black'>NATION</th>
+            <th className='border border-black'>TEAM</th>
+            <th className='border border-black'>BIKE</th>
+            <th className='border border-black'>KM.h</th>
+            <th className='border border-black'>TIME/GAP</th>
 
           </tr>
         </thead>
