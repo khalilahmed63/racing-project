@@ -27,7 +27,6 @@ export default function Home() {
   const fetchRecord = async () => {
     try {
       const response = await axios.get(`${fetchRecordsAPI}?=${page}`);
-      const response = await axios.get(`${fetchRecordsAPI}?=${page}`);
       setRecord(response?.data);
       console.log(response, response);
     } catch (error) {
