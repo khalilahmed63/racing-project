@@ -146,7 +146,7 @@ export default function Home() {
               <p className="underline">MotoGP™ RAC Classification 2023</p>
             </Link>
           </div>
-          <div className="sm:flex gap-5 mt-4 sm:mt-0 items-center px-5 justify-end">
+          <div className="sm:flex gap-5 mt-4 sm:mt-0 items-center sm:px-5 justify-end">
             <div className="flex gap-5">
               <Select
                 className="w-44"
@@ -196,15 +196,15 @@ export default function Home() {
           </div>
         </div>
         <div className="p-2 px-2 bg-[#1A1B1E] sm:flex justify-between border">
-          <div className="flex mb-2 sm:mb-0">
+          <div className="flex mb-3 sm:mb-0">
             <p className="text-xs text-white">TT Circuit Assen , June 25th 2023</p>
           </div>
           <div className="flex">
-            <p className="text-xs text-white sm:mb-3 mx-1">30º C</p>
-            <p className="text-xs text-white sm:mb-3 mx-1">Clear</p>
-            <p className="text-xs text-white sm:mb-3 mx-1">Track condition: Dry</p>
-            <p className="text-xs text-white sm:mb-3 mx-1">Humidity: 32%</p>
-            <p className="text-xs text-white sm:mb-3 mx-1">Ground: 47º</p>
+            <p className="text-xs text-white mb-3 sm:mb-0 mx-1">30º C</p>
+            <p className="text-xs text-white mb-3 sm:mb-0 mx-1">Clear</p>
+            <p className="text-xs text-white mb-3 sm:mb-0 mx-1">Track condition: Dry</p>
+            <p className="text-xs text-white mb-3 sm:mb-0 mx-1">Humidity: 32%</p>
+            <p className="text-xs text-white mb-3 sm:mb-0 mx-1">Ground: 47º</p>
           </div>
         </div>
         {!loading ? (
@@ -212,7 +212,7 @@ export default function Home() {
             <Table
               striped
               highlightOnHover
-              className="max-h-96 border min-w-[400px] !overflow-scroll overflow-x-auto"
+              className="max-h-96 min-w-[400px] !overflow-scroll overflow-x-auto"
               verticalSpacing="lg"
             >
               <thead className="my-4">
@@ -233,7 +233,7 @@ export default function Home() {
                     <td>{item.classification_position}</td>
                     <td>{item.points}</td>
                     <td>{item.classification_rider_full_name}</td>
-                    <td>{item.name}</td>
+                    <td>{item.record_rider_country_name}</td>
                     <td>{item.classification_team_name}</td>
                     <td>{item.constructor_name}</td>
                     <td>{item.record_speed}</td>
