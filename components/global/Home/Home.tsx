@@ -1,7 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
-import { Box, Button, Loader, LoadingOverlay, MultiSelect, Select, Table } from '@mantine/core';
+import {
+  BackgroundImage,
+  Box,
+  Button,
+  Loader,
+  LoadingOverlay,
+  MultiSelect,
+  Select,
+  Table,
+} from '@mantine/core';
 import axios from 'axios';
+import Link from 'next/link';
 
 export default function Home() {
   const [category, setCategory] = useState('');
@@ -124,52 +134,78 @@ export default function Home() {
   }, [page, category, event, session]);
 
   return (
-    <>
-    <h1 className="text-2xl mt-12 font-bold text-center mb-2">MOTOGP RACE RESULT</h1>
-    <div className="flex gap-5 mb-19 mt-10 items-start ml-7 ">
-      <Select
-        className="w-24 h-8 "
-        label="Year"
-        placeholder="Select year"
-        clearable
-        value={selectedYear}
-        onChange={handleYearChange}
-        data={years.map((year) => ({ value: year, label: year }))} />
-      <Select
-       className="w-24 h-8"
-        label="EVENT"
-        placeholder="Pick one"
-        searchable
-        clearable
-        onSearchChange={setEvent}
-        searchValue={event}
-        nothingFound="No options"
-        data={eventList} />
-      <Select
-       className="w-24 h-8"
-        label="Category"
-        placeholder="Pick one"
-        searchable
-        clearable
-        onSearchChange={setCategory}
-        searchValue={category}
-        nothingFound="No options"
-        data={categoryList} />
-      <Select
-       className="w-24 h-8"
-        label="Sessions"
-        placeholder="Pick one"
-        searchable
-        clearable
-        onSearchChange={setSession}
-        searchValue={session}
-        nothingFound="No options"
-        data={sessionList} />
-    </div>
-    <div className="max-w-screen-lg mx-auto  pt-24">
+    <div className="max-w-screen-2xl mx-auto">
+      <BackgroundImage src="/motogpbanner2.jpg">
+        <div className="h-52" />
+      </BackgroundImage>
+      <div className="">
+        <div className="w-full flex justify-between p-4">
+          <div className="">
+            <h1 className="text-xl font-bold mb-3">Motul TT Assen</h1>
+            <Link href="#" target="_blank" passHref>
+              <p className="underline">MotoGP™ RAC Classification 2023</p>
+            </Link>
+          </div>
+          <div className="flex gap-5 items-center px-5 justify-end">
+            <Select
+              className="w-28"
+              label="Year"
+              placeholder="Select year"
+              clearable
+              value={selectedYear}
+              onChange={handleYearChange}
+              data={years.map((year) => ({ value: year, label: year }))}
+            />
+            <Select
+              className="w-44"
+              label="EVENT"
+              placeholder="Pick one"
+              searchable
+              clearable
+              onSearchChange={setEvent}
+              searchValue={event}
+              nothingFound="No options"
+              data={eventList}
+            />
+            <Select
+              className="w-44"
+              label="Category"
+              placeholder="Pick one"
+              searchable
+              clearable
+              onSearchChange={setCategory}
+              searchValue={category}
+              nothingFound="No options"
+              data={categoryList}
+            />
+            <Select
+              className="w-44"
+              label="Sessions"
+              placeholder="Pick one"
+              searchable
+              clearable
+              onSearchChange={setSession}
+              searchValue={session}
+              nothingFound="No options"
+              data={sessionList}
+            />
+          </div>
+        </div>
+        <div className="p-2 px-2 bg-[#1A1B1E] flex justify-between border">
+          <div className="flex">
+            <p className="text-xs text-white">TT Circuit Assen , June 25th 2023</p>
+          </div>
+          <div className="flex">
+            <p className="text-xs text-white mx-3">30º C</p>
+            <p className="text-xs text-white mx-3">Clear</p>
+            <p className="text-xs text-white mx-3">Track condition: Dry</p>
+            <p className="text-xs text-white mx-3">Humidity: 32%</p>
+            <p className="text-xs text-white mx-3">Ground: 47º</p>
+          </div>
+        </div>
         {!loading ? (
           <div className="w-full ">
-            <Table striped highlightOnHover className="max-h-96">
+            <Table striped highlightOnHover className="max-h-96" verticalSpacing="lg">
               <thead className="my-4">
                 <tr>
                   <th className="">POS</th>
@@ -184,7 +220,7 @@ export default function Home() {
               </thead>
               <tbody>
                 {record?.map((item: any) => (
-                  <tr key={item.id}>
+                  <tr key={item.id} className="!py-4">
                     <td>{item.classification_position}</td>
                     <td>{item.points}</td>
                     <td>{item.classification_rider_full_name}</td>
@@ -226,6 +262,7 @@ export default function Home() {
             <Loader size="xl" />
           </div>
         )}
-      </div></>
+      </div>
+    </div>
   );
 }
