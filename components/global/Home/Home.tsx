@@ -139,73 +139,82 @@ export default function Home() {
         <div className="h-52" />
       </BackgroundImage>
       <div className="">
-        <div className="w-full flex justify-between p-4">
+        <div className="w-full sm:flex justify-between p-4">
           <div className="">
             <h1 className="text-xl font-bold mb-3">Motul TT Assen</h1>
             <Link href="#" target="_blank" passHref>
               <p className="underline">MotoGP™ RAC Classification 2023</p>
             </Link>
           </div>
-          <div className="flex gap-5 items-center px-5 justify-end">
-            <Select
-              className="w-28"
-              label="Year"
-              placeholder="Select year"
-              clearable
-              value={selectedYear}
-              onChange={handleYearChange}
-              data={years.map((year) => ({ value: year, label: year }))}
-            />
-            <Select
-              className="w-44"
-              label="EVENT"
-              placeholder="Pick one"
-              searchable
-              clearable
-              onSearchChange={setEvent}
-              searchValue={event}
-              nothingFound="No options"
-              data={eventList}
-            />
-            <Select
-              className="w-44"
-              label="Category"
-              placeholder="Pick one"
-              searchable
-              clearable
-              onSearchChange={setCategory}
-              searchValue={category}
-              nothingFound="No options"
-              data={categoryList}
-            />
-            <Select
-              className="w-44"
-              label="Sessions"
-              placeholder="Pick one"
-              searchable
-              clearable
-              onSearchChange={setSession}
-              searchValue={session}
-              nothingFound="No options"
-              data={sessionList}
-            />
+          <div className="sm:flex gap-5 mt-4 sm:mt-0 items-center px-5 justify-end">
+            <div className="flex gap-5">
+              <Select
+                className="w-44"
+                label="Year"
+                placeholder="Select year"
+                clearable
+                value={selectedYear}
+                onChange={handleYearChange}
+                data={years.map((year) => ({ value: year, label: year }))}
+              />
+              <Select
+                className="w-44"
+                label="EVENT"
+                placeholder="Pick one"
+                searchable
+                clearable
+                onSearchChange={setEvent}
+                searchValue={event}
+                nothingFound="No options"
+                data={eventList}
+              />
+            </div>
+            <div className="flex gap-5">
+              <Select
+                className="w-44"
+                label="Category"
+                placeholder="Pick one"
+                searchable
+                clearable
+                onSearchChange={setCategory}
+                searchValue={category}
+                nothingFound="No options"
+                data={categoryList}
+              />
+              <Select
+                className="w-44"
+                label="Sessions"
+                placeholder="Pick one"
+                searchable
+                clearable
+                onSearchChange={setSession}
+                searchValue={session}
+                nothingFound="No options"
+                data={sessionList}
+              />
+            </div>
           </div>
         </div>
-        <div className="p-2 px-2 bg-[#1A1B1E] flex justify-between border">
-          <div className="flex">
+        <div className="p-2 px-2 bg-[#1A1B1E] sm:flex justify-between border">
+          <div className="flex mb-2 sm:mb-0">
             <p className="text-xs text-white">TT Circuit Assen , June 25th 2023</p>
           </div>
           <div className="flex">
-            <p className="text-xs text-white mx-3">30º C</p>
-            <p className="text-xs text-white mx-3">Clear</p>
-            <p className="text-xs text-white mx-3">Track condition: Dry</p>
-            <p className="text-xs text-white mx-3">Humidity: 32%</p>
-            <p className="text-xs text-white mx-3">Ground: 47º</p>
+            <p className="text-xs text-white sm:mb-3 mx-1">30º C</p>
+            <p className="text-xs text-white sm:mb-3 mx-1">Clear</p>
+            <p className="text-xs text-white sm:mb-3 mx-1">Track condition: Dry</p>
+            <p className="text-xs text-white sm:mb-3 mx-1">Humidity: 32%</p>
+            <p className="text-xs text-white sm:mb-3 mx-1">Ground: 47º</p>
           </div>
         </div>
         {!loading ? (
-          <div className="w-full ">
-            <Table striped highlightOnHover className="max-h-96" verticalSpacing="lg">
+          <div>
+            <Table
+              striped
+              highlightOnHover
+              className="max-h-96 border min-w-[400px] !overflow-scroll overflow-x-auto"
+              verticalSpacing="lg"
+            >
               <thead className="my-4">
                 <tr>
                   <th className="">POS</th>
