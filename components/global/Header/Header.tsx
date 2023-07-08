@@ -2,6 +2,7 @@ import { Autocomplete, Group, Header, Image, createStyles, rem } from '@mantine/
 import Link from 'next/link';
 import { IconSearch } from 'tabler-icons';
 import { ColorSchemeToggle } from '../Common/ColorSchemeToggle';
+import { useState } from 'react';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -46,11 +47,29 @@ const useStyles = createStyles((theme) => ({
 
 export default function NavigationHeader() {
   const { classes } = useStyles();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleMenuClose = () => {
+    setIsOpen(false);
+  };
 
   const links = [
     {
-      label: 'OpenAI',
-      link: 'https://openai.com',
+      label: 'MotoGP',
+      submenu: [
+        {
+          label: 'RACE RESULT',
+          link: '/raceresult',
+        },
+        {
+          label: 'Standing',
+          link: '/standign',
+        },
+      ]
     },
     {
       label: 'GitHub',
@@ -77,34 +96,77 @@ export default function NavigationHeader() {
     </a>
   ));
 
-  return (
-    <div className="fixed top-0 z-[100] w-full">
-      <Header height={56} className={classes.header} mb={120}>
-        <div className={classes.inner}>
-          <Group>
-            <Link href="/" passHref>
-              <Image alt="logo" height={25} src="/favicon.svg" />
-            </Link>
-          </Group>
-
-          <Group>
-            <Group ml={50} spacing={5} className={classes.links}>
-              {items}
-            </Group>
-            <Autocomplete
-              className={classes.search}
-              placeholder="Search"
-              icon={<IconSearch size="1rem" stroke={1.5} />}
-              data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
-            />
-          </Group>
-          <Group>
-            <div className="mb-6">
-              <ColorSchemeToggle />
+  return (  
+    <> 
+    <div className="bg-gray-300">
+    <ul className="flex items-center justify-between max-w-4xl mx-auto p-4">
+      {links.map((link, index) => (
+        <li key={index} className="relative">
+          {link.submenu ? (
+            <div
+              className="dropdown"
+              onMouseEnter={handleMenuToggle}
+              onMouseLeave={handleMenuClose}
+            >
+              <button
+                className="dropdown-toggle text-white font-medium"
+              >
+                {link.label}
+              </button>
+              {isOpen && (
+                <ul className="dropdown-menu absolute mt-2 py-2 px-4 bg-white rounded shadow-md">
+                  {link.submenu.map((submenuItem, subIndex) => (
+                    <li key={subIndex}>
+                      <a
+                        href={submenuItem.link}
+                        className="block px-2 py-1 text-gray-800 hover:bg-gray-200"
+                        onClick={handleMenuClose}
+                      >
+                        {submenuItem.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
-          </Group>
-        </div>
-      </Header>
-    </div>
+          ) : (
+            <a
+              href={link.link}
+              className="text-white font-medium hover:text-gray-200 cursor-pointer"
+            >
+              {link.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div className="fixed top-0 z-[100] w-full ">
+        <Header height={56} className={classes.header} mb={120} >
+          <div className={classes.inner}>
+            <Group>
+              <Link href="/" passHref>
+                <Image alt="logo" height={25} src="/favicon.svg" />
+              </Link>
+            </Group>
+
+            <Group>
+              <Group ml={50} spacing={5} className={classes.links}>
+                {items}
+              </Group>
+              <Autocomplete
+                className={classes.search}
+                placeholder="Search"
+                icon={<IconSearch size="1rem" stroke={1.5} />}
+                data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']} />
+            </Group>
+            <Group>
+              <div className="mb-6">
+                <ColorSchemeToggle />
+              </div>
+            </Group>
+          </div>
+        </Header>
+      </div></>
   );
 }

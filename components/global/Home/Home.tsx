@@ -124,107 +124,108 @@ export default function Home() {
   }, [page, category, event, session]);
 
   return (
-    <div className="max-w-screen-lg mx-auto  pt-24">
-      <h1 className="text-2xl font-bold text-center mb-2">MOTOGP RACE RESULT</h1>
-      <div className="flex justify-center gap-5 mb-10 ">
-        <Select
-          label="Year"
-          placeholder="Select year"
-          clearable
-          value={selectedYear}
-          onChange={handleYearChange}
-          data={years.map((year) => ({ value: year, label: year }))}
-        />
-        <Select
-          label="EVENT"
-          placeholder="Pick one"
-          searchable
-          clearable
-          onSearchChange={setEvent}
-          searchValue={event}
-          nothingFound="No options"
-          data={eventList}
-        />
-        <Select
-          label="Category"
-          placeholder="Pick one"
-          searchable
-          clearable
-          onSearchChange={setCategory}
-          searchValue={category}
-          nothingFound="No options"
-          data={categoryList}
-        />
-        <Select
-          label="Sessions"
-          placeholder="Pick one"
-          searchable
-          clearable
-          onSearchChange={setSession}
-          searchValue={session}
-          nothingFound="No options"
-          data={sessionList}
-        />
-      </div>
-      {!loading ? (
-        <div className="w-full ">
-          <Table striped highlightOnHover className="max-h-96">
-            <thead className="my-4">
-              <tr>
-                <th className="">POS</th>
-                <th className="">POINTS</th>
-                <th className="">RIDER</th>
-                <th className="">NATION</th>
-                <th className="">TEAM</th>
-                <th className="">BIKE</th>
-                <th className="">KM.h</th>
-                <th className="">TIME/GAP</th>
-              </tr>
-            </thead>
-            <tbody>
-              {record?.map((item: any) => (
-                <tr key={item.id}>
-                  <td>{item.classification_position}</td>
-                  <td>{item.points}</td>
-                  <td>{item.classification_rider_full_name}</td>
-                  <td>{item.name}</td>
-                  <td>{item.classification_team_name}</td>
-                  <td>{item.constructor_name}</td>
-                  <td>{item.record_speed}</td>
-                  <td>
-                    {item.time}/{item.gap_first}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-          {/* <div className="flex justify-center items-center mt-2">
-            <Button
-              variant="default"
-              disabled={page <= 1}
-              onClick={() => {
-                if (page > 1) setPage(page - 1);
-              }}
-              className="mr-4"
-            >
-              Previous
-            </Button>
-            <Button
-              variant="default"
-              disabled={page >= 10}
-              onClick={() => {
-                if (page < 10) setPage(page + 1);
-              }}
-            >
-              Next
-            </Button>
-          </div> */}
-        </div>
-      ) : (
-        <div className="flex justify-center items-center pt-10">
-          <Loader size="xl" />
-        </div>
-      )}
+    <>
+    <h1 className="text-2xl mt-12 font-bold text-center mb-2">MOTOGP RACE RESULT</h1>
+    <div className="flex gap-5 mb-19 mt-10 items-start ml-7 ">
+      <Select
+        className="w-24 h-8 "
+        label="Year"
+        placeholder="Select year"
+        clearable
+        value={selectedYear}
+        onChange={handleYearChange}
+        data={years.map((year) => ({ value: year, label: year }))} />
+      <Select
+       className="w-24 h-8"
+        label="EVENT"
+        placeholder="Pick one"
+        searchable
+        clearable
+        onSearchChange={setEvent}
+        searchValue={event}
+        nothingFound="No options"
+        data={eventList} />
+      <Select
+       className="w-24 h-8"
+        label="Category"
+        placeholder="Pick one"
+        searchable
+        clearable
+        onSearchChange={setCategory}
+        searchValue={category}
+        nothingFound="No options"
+        data={categoryList} />
+      <Select
+       className="w-24 h-8"
+        label="Sessions"
+        placeholder="Pick one"
+        searchable
+        clearable
+        onSearchChange={setSession}
+        searchValue={session}
+        nothingFound="No options"
+        data={sessionList} />
     </div>
+    <div className="max-w-screen-lg mx-auto  pt-24">
+        {!loading ? (
+          <div className="w-full ">
+            <Table striped highlightOnHover className="max-h-96">
+              <thead className="my-4">
+                <tr>
+                  <th className="">POS</th>
+                  <th className="">POINTS</th>
+                  <th className="">RIDER</th>
+                  <th className="">NATION</th>
+                  <th className="">TEAM</th>
+                  <th className="">BIKE</th>
+                  <th className="">KM.h</th>
+                  <th className="">TIME/GAP</th>
+                </tr>
+              </thead>
+              <tbody>
+                {record?.map((item: any) => (
+                  <tr key={item.id}>
+                    <td>{item.classification_position}</td>
+                    <td>{item.points}</td>
+                    <td>{item.classification_rider_full_name}</td>
+                    <td>{item.name}</td>
+                    <td>{item.classification_team_name}</td>
+                    <td>{item.constructor_name}</td>
+                    <td>{item.record_speed}</td>
+                    <td>
+                      {item.time}/{item.gap_first}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+            {/* <div className="flex justify-center items-center mt-2">
+              <Button
+                variant="default"
+                disabled={page <= 1}
+                onClick={() => {
+                  if (page > 1) setPage(page - 1);
+                }}
+                className="mr-4"
+              >
+                Previous
+              </Button>
+              <Button
+                variant="default"
+                disabled={page >= 10}
+                onClick={() => {
+                  if (page < 10) setPage(page + 1);
+                }}
+              >
+                Next
+              </Button>
+            </div> */}
+          </div>
+        ) : (
+          <div className="flex justify-center items-center pt-10">
+            <Loader size="xl" />
+          </div>
+        )}
+      </div></>
   );
 }
