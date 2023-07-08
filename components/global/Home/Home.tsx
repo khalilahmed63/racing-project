@@ -2,11 +2,7 @@
 import { useEffect, useState } from 'react';
 import {
   BackgroundImage,
-  Box,
-  Button,
   Loader,
-  LoadingOverlay,
-  MultiSelect,
   Select,
   Table,
 } from '@mantine/core';
