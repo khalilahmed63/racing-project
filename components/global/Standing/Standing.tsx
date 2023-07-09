@@ -13,7 +13,7 @@ export default function Standing() {
 
   const fetchRecordsAPI = `https://racingmike.com/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=${
     selectedYear || '2023'
-  }&categoryid=${selectedYear || 'e8c110ad-64aa-4e8e-8a86-f2f152f6a942'}`;
+  }&categoryid=${category || 'e8c110ad-64aa-4e8e-8a86-f2f152f6a942'}`;
 
   const [record, setRecord] = useState<any>([]);
   const [categories, setCategories] = useState<any>([]);
