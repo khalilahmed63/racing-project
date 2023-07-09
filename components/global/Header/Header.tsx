@@ -84,7 +84,7 @@ export default function NavigationHeader() {
                     </Link>
                   </div>
                 </div>
-                <Link href="/" className={classes.link}>
+                <Link href="#" className={classes.link}>
                   CONTACT
                 </Link>
               </Group>

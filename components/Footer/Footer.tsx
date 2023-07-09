@@ -145,7 +145,7 @@ export function Footer() {
   return (
     <footer className={`${classes.footer}`}>
       <div className="flex justify-between items-center max-w-screen-xl mx-auto pb-6">
-        <div className={classes.logo}>
+        <div className={`${classes.logo} mx-auto sm:mx-0`}>
           <div className="">
             <Link href="/" passHref>
               <Image alt="logo" height={40} width={40} src="/favicon.svg" />
@@ -155,7 +155,6 @@ export function Footer() {
             Build fully functional accessible web applications faster than ever
           </Text>
         </div>
-
         <div className={classes.groups}>{groups}</div>
       </div>
       <div className="flex justify-between items-center max-w-screen-xl mx-auto border-t pt-4">
