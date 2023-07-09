@@ -1,6 +1,5 @@
-import { Autocomplete, Group, Header, Image, createStyles, rem } from '@mantine/core';
+import { Group, Header, Image, createStyles, rem } from '@mantine/core';
 import Link from 'next/link';
-import { IconSearch } from 'tabler-icons';
 import { ColorSchemeToggle } from '../Common/ColorSchemeToggle';
 
 const useStyles = createStyles((theme) => ({
@@ -46,7 +45,6 @@ const useStyles = createStyles((theme) => ({
 
 export default function NavigationHeader() {
   const { classes } = useStyles();
-  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -67,10 +65,10 @@ export default function NavigationHeader() {
                 <div className="group">
                   <div className={`${classes.link} relative cursor-pointer`}>MOTOGP</div>
                   <div className="hidden p-2 absolute bg-white rounded-md group-hover:block">
-                    <Link href="/Motogp-race-result" className={`${classes.link} py-3`}>
+                    <Link href="/motogp-race-result" className={`${classes.link} py-3`}>
                       RACE RESULT
                     </Link>
-                    <Link href="/Motogp-race-result" className={`${classes.link} py-3`}>
+                    <Link href="/standing" className={`${classes.link} py-3`}>
                       STANDING
                     </Link>
                   </div>
@@ -90,12 +88,12 @@ export default function NavigationHeader() {
                   CONTACT
                 </Link>
               </Group>
-              <Autocomplete
+              {/* <Autocomplete
                 className={classes.search}
                 placeholder="Search"
                 icon={<IconSearch size="1rem" stroke={1.5} />}
                 data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
-              />
+              /> */}
             </Group>
             <Group>
               <div className="mb-6">
