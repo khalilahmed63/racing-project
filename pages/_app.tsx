@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
-import { NewFooter } from '../components/NewFooter/NewFooter';
+import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
-import Head from 'next/head';
 import './globals.css';
 import NavigationHeader from '../components/global/Header/Header';
-
+import { NewFooter } from '../components/NewFooter/NewFooter';
+import HomePage from '../components/HomePage/HomePage';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -56,6 +56,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
           <NavigationHeader />
+          <HomePage/>
           <Component {...pageProps} />
           <NavigationHeader />
           <Notifications />
