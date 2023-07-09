@@ -4,8 +4,8 @@ import { Card, Image, Text } from '@mantine/core';
 export default function HomePage() {
   return (
     <>
-      <div className="container max-w-screen-2xl mx-auto pt-16 pb-10 overflow-auto">
-        <h1 className="mb-2">NEWS</h1>
+      <div className="container max-w-screen-xl mx-auto pt-16 pb-10 overflow-auto">
+        <h1 className="mb-3">NEWS</h1>
         <Carousel
           withIndicators
           height={240}
@@ -155,8 +155,8 @@ export default function HomePage() {
           </Carousel.Slide>
         </Carousel>
       </div>
-      <div className="container max-w-screen-2xl mx-auto pb-10 overflow-auto">
-        <h1 className="mb-2">FORMULA UNO SCHEDULE</h1>
+      <div className="container max-w-screen-xl mx-auto pb-10 overflow-auto">
+        <h1 className="mb-3">FORMULA UNO SCHEDULE</h1>
         <Carousel
           withIndicators
           height={240}
@@ -306,8 +306,8 @@ export default function HomePage() {
           </Carousel.Slide>
         </Carousel>
       </div>
-      <div className="container max-w-screen-2xl mx-auto pb-10 overflow-auto">
-        <h1 className="mb-2">MOTOGP SHEDULE</h1>
+      <div className="container max-w-screen-xl mx-auto pb-10 overflow-auto">
+        <h1 className="mb-3">MOTOGP SHEDULE</h1>
         <Carousel
           withIndicators
           height={240}

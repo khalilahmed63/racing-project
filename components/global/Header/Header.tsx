@@ -81,7 +81,7 @@ export default function NavigationHeader() {
     <>
       <div className="fixed top-0 z-[100] w-full ">
         <Header height={56} className={classes.header} mb={120}>
-          <div className={classes.inner}>
+          <div className={`${classes.inner} max-w-screen-xl mx-auto`}>
             <Group>
               <Link href="/" passHref>
                 <Image alt="logo" height={25} src="/favicon.svg" />
