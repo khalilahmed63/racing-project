@@ -1,14 +1,5 @@
-import {
-  createStyles,
-  Text,
-  Container,
-  ActionIcon,
-  Group,
-  rem,
-  useMantineTheme,
-} from '@mantine/core';
+import { createStyles, Text, ActionIcon, Group, rem } from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
-// import MantineLogo  from './public/MantineLogo.png';
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -37,16 +28,6 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.smallerThan('sm')]: {
       marginTop: theme.spacing.xs,
       textAlign: 'center',
-    },
-  },
-
-  inner: {
-    display: 'flex',
-    justifyContent: 'space-between',
-
-    [theme.fn.smallerThan('sm')]: {
-      flexDirection: 'column',
-      alignItems: 'center',
     },
   },
 
@@ -106,35 +87,40 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface FooterLinksProps {
-  data: {
-    title: string;
-    links: { label: string; link: string }[];
-  }[];
-}
-
-const FooterLinksProps = [
+const footerData = [
   {
-    title: 'Group 1',
+    title: 'About',
     links: [
-      { label: 'Link 1', link: 'https://example.com/link1' },
-      { label: 'Link 2', link: 'https://example.com/link2' },
+      { label: 'features', link: 'https://example.com/link1' },
+      { label: 'Pricing', link: 'https://example.com/link2' },
+      { label: 'Support', link: 'https://example.com/link4' },
+      { label: 'Fourms', link: 'https://example.com/link4' },
     ],
   },
   {
-    title: 'Group 2',
+    title: 'Projects',
     links: [
-      { label: 'Link 3', link: 'https://example.com/link3' },
-      { label: 'Link 4', link: 'https://example.com/link4' },
+      { label: 'Contribute', link: 'https://example.com/link3' },
+      { label: 'Media assets', link: 'https://example.com/link4' },
+      { label: 'Changelog', link: 'https://example.com/link4' },
+      { label: 'Release', link: 'https://example.com/link4' },
+    ],
+  },
+  {
+    title: 'Community',
+    links: [
+      { label: 'Join Discord', link: 'https://example.com/link3' },
+      { label: 'Follow on Twitter', link: 'https://example.com/link4' },
+      { label: 'Email newsletter', link: 'https://example.com/link4' },
+      { label: 'Github discussion', link: 'https://example.com/link4' },
     ],
   },
 ];
 
-export function NewFooter({ data }: FooterLinksProps) {
-  const theme = useMantineTheme();
+export function Footer() {
   const { classes } = useStyles();
 
-  const groups = data.map((group) => {
+  const groups = footerData.map((group) => {
     const links = group.links.map((link, index) => (
       <Text<'a'>
         key={index}
@@ -156,8 +142,8 @@ export function NewFooter({ data }: FooterLinksProps) {
   });
 
   return (
-    <footer className={classes.footer}>
-      <Container className={classes.inner}>
+    <footer className={`${classes.footer}`}>
+      <div className="flex justify-between items-center max-w-screen-xl mx-auto pb-6">
         <div className={classes.logo}>
           {/* <MantineLogo size={30} /> */}
           <Text size="xs" color="dimmed" className={classes.description}>
@@ -166,8 +152,8 @@ export function NewFooter({ data }: FooterLinksProps) {
         </div>
 
         <div className={classes.groups}>{groups}</div>
-      </Container>
-      <Container className={classes.afterFooter}>
+      </div>
+      <div className="flex justify-between items-center max-w-screen-xl mx-auto border-t pt-4">
         <Text color="dimmed" size="sm">
           © 2020 mantine.dev. All rights reserved.
         </Text>
@@ -183,7 +169,7 @@ export function NewFooter({ data }: FooterLinksProps) {
             <IconBrandInstagram size="1.05rem" stroke={1.5} />
           </ActionIcon>
         </Group>
-      </Container>
+      </div>
     </footer>
   );
 }
