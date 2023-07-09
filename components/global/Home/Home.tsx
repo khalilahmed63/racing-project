@@ -197,10 +197,10 @@ export default function Home() {
           </div>
           <div className="flex">
             <p className="text-xs text-white mb-3 sm:mb-0 mx-1">30º C</p>
-            <p className="text-xs text-white mb-3 sm:mb-0 mx-1">Clear</p>
-            <p className="text-xs text-white mb-3 sm:mb-0 mx-1">Track condition: Dry</p>
-            <p className="text-xs text-white mb-3 sm:mb-0 mx-1">Humidity: 32%</p>
-            <p className="text-xs text-white mb-3 sm:mb-0 mx-1">Ground: 47º</p>
+            <p className="text-xs text-white mb-3 sm:mb-0 ml-2">Clear</p>
+            <p className="text-xs text-white mb-3 sm:mb-0 ml-2">Track condition: Dry</p>
+            <p className="text-xs text-white mb-3 sm:mb-0 ml-2">Humidity: 32%</p>
+            <p className="text-xs text-white mb-3 sm:mb-0 ml-2">Ground: 47º</p>
           </div>
         </div>
         {!loading ? (
