@@ -25,7 +25,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -52,7 +52,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -79,7 +79,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -106,7 +106,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -133,7 +133,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -176,7 +176,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -203,7 +203,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -230,7 +230,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -257,7 +257,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -284,7 +284,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -327,7 +327,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -354,7 +354,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -381,7 +381,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -408,7 +408,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
@@ -435,7 +435,7 @@ export default function HomePage() {
               withBorder
               padding="sm"
               component="a"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.google.com/"
               target="_blank"
             >
               <Card.Section>
