@@ -1,9 +1,10 @@
-import { createStyles, Text, ActionIcon, Group, rem } from '@mantine/core';
+import { createStyles, Text, ActionIcon, Group, rem, Image } from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
+import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    marginTop: rem(120),
+    marginTop: rem(60),
     paddingTop: `calc(${theme.spacing.xl} * 2)`,
     paddingBottom: `calc(${theme.spacing.xl} * 2)`,
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
@@ -145,7 +146,11 @@ export function Footer() {
     <footer className={`${classes.footer}`}>
       <div className="flex justify-between items-center max-w-screen-xl mx-auto pb-6">
         <div className={classes.logo}>
-          {/* <MantineLogo size={30} /> */}
+          <div className="">
+            <Link href="/" passHref>
+              <Image alt="logo" height={40} width={40} src="/favicon.svg" />
+            </Link>
+          </div>
           <Text size="xs" color="dimmed" className={classes.description}>
             Build fully functional accessible web applications faster than ever
           </Text>

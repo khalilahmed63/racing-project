@@ -50,11 +50,11 @@ export default function NavigationHeader() {
   const links = [
     {
       label: 'HOME',
-      link: 'https://www.google.com',
+      link: '/',
     },
     {
       label: 'MOTOGP',
-      link: 'https://github.com',
+      link: '/Motogp-race-result',
     },
     {
       label: 'FORMULAONE',
@@ -67,14 +67,13 @@ export default function NavigationHeader() {
   ];
 
   const items = links.map((link) => (
-    <a
+    <Link
       key={link.label}
       href={link.link}
       className={classes.link}
-      onClick={(event) => event.preventDefault()}
     >
       {link.label}
-    </a>
+    </Link>
   ));
 
   return (

@@ -1,11 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
-import {
-  BackgroundImage,
-  Loader,
-  Select,
-  Table,
-} from '@mantine/core';
+import { BackgroundImage, Loader, Select, Table } from '@mantine/core';
 import axios from 'axios';
 import Link from 'next/link';
 
@@ -130,7 +125,7 @@ export default function MotoResult() {
   }, [page, category, event, session]);
 
   return (
-    <div className="max-w-screen-2xl mx-auto">
+    <div className="max-w-screen-xl mx-auto">
       <BackgroundImage src="/motogpbanner2.jpg">
         <div className="h-52" />
       </BackgroundImage>
@@ -263,9 +258,12 @@ export default function MotoResult() {
             </div> */}
           </div>
         ) : (
-          <div className="flex justify-center items-center pt-10">
-            <Loader size="xl" />
-          </div>
+          <>
+            <div className="flex justify-center items-center pt-10">
+              <Loader size="xl" />
+            </div>
+            <div className="h-52" />
+          </>
         )}
       </div>
     </div>
