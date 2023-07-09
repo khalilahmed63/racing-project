@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import './globals.css';
-import NavigationHeader from '../components/global/Header/Header';
+import NavigationHeader from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
