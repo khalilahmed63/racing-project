@@ -9,7 +9,7 @@ import {
 import axios from 'axios';
 import Link from 'next/link';
 
-export default function Home() {
+export default function MotoResult() {
   const [category, setCategory] = useState('');
   const [event, setEvent] = useState('');
   const [session, setSession] = useState('');

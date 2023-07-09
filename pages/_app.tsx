@@ -6,6 +6,8 @@ import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core
 import { Notifications } from '@mantine/notifications';
 import './globals.css';
 import NavigationHeader from '../components/global/Header/Header';
+import { NewFooter } from '../components/NewFooter/NewFooter';
+import HomePage from '../components/HomePage/HomePage';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -16,6 +18,32 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     setColorScheme(nextColorScheme);
     setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
+  const footerData = [
+    {
+      title: 'Group 1',
+      links: [
+        { label: 'Link 1', link: 'https://example.com/link1' },
+        { label: 'Link 2', link: 'https://example.com/link2' },
+        { label: 'Link 4', link: 'https://example.com/link4' },
+      ],
+    },
+    {
+      title: 'Group 2',
+      links: [
+        { label: 'Link 3', link: 'https://example.com/link3' },
+        { label: 'Link 4', link: 'https://example.com/link4' },
+        { label: 'Link 4', link: 'https://example.com/link4' },
+      ],
+    },
+    {
+      title: 'Group 3',
+      links: [
+        { label: 'Link 3', link: 'https://example.com/link3' },
+        { label: 'Link 4', link: 'https://example.com/link4' },
+        { label: 'Link 4', link: 'https://example.com/link4' },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -28,9 +56,11 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
           <NavigationHeader />
+          <HomePage/>
           <Component {...pageProps} />
           <NavigationHeader />
           <Notifications />
+          <NewFooter data={footerData} />
         </MantineProvider>
       </ColorSchemeProvider>
     </>
