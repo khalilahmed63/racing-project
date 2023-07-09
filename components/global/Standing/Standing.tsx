@@ -9,13 +9,11 @@ import Link from 'next/link';
 
 export default function Standing() {
   const [category, setCategory] = useState('');
-  const [event, setEvent] = useState('');
-  const [session, setSession] = useState('');
   const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
 
-  const fetchRecordsAPI = `https://racingmike.com/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&eventid=${
-    event || '8ed52491-e1aa-49a9-8d70-f1c1f8dd3090'
-  }&categoryid=${category || 'e8c110ad-64aa-4e8e-8a86-f2f152f6a942'}&session=${session || 'RAC'}`;
+  const fetchRecordsAPI = `https://racingmike.com/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=${
+    selectedYear || '2023'
+  }&categoryid=${selectedYear || 'e8c110ad-64aa-4e8e-8a86-f2f152f6a942'}`;
 
   const [record, setRecord] = useState<any>([]);
   const [categories, setCategories] = useState<any>([]);
@@ -120,9 +118,7 @@ export default function Standing() {
               className="-mb-6 cursor-pointer hover:text-blue-600"
               onClick={() => {
                 setSelectedYear('');
-                setEvent('');
                 setCategory('');
-                setSession('');
               }}
             >
               Clear filter
@@ -143,42 +139,50 @@ export default function Standing() {
         </div>
         {!loading ? (
           <div>
-            <Table
-              striped
-              highlightOnHover
-              className="max-h-96 min-w-[400px] !overflow-scroll overflow-x-auto"
-              verticalSpacing="lg"
-            >
-              <thead className="my-4">
-                <tr>
-                  <th className="">POS</th>
-                  <th className="">RIDER</th>
-                  <th className="">NATION</th>
-                  <th className="">TEAM</th>
-                  <th className="">BIKE</th>
-                  <th className="">POINTS</th>
-                </tr>
-              </thead>
-              <tbody>
-                {record?.map((item: any) => (
-                  <tr key={item.id} className="!py-4">
-                    <td>{item.classification_position}</td>
-                    <td>{item.classification_rider_full_name}</td>
-                    <td>{item.record_rider_country_name}</td>
-                    <td>{item.classification_team_name}</td>
-                    <td>{item.constructor_name}</td>
-                    <td>{item.points}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
+            <>
+              {record.length < 1 ? (
+                <div className="h-96">
+                  <h1 className="text-center font-bold pt-20">Record not found :(</h1>
+                </div>
+              ) : (
+                <Table
+                  striped
+                  highlightOnHover
+                  className="max-h-96 min-w-[400px] !overflow-scroll overflow-x-auto"
+                  verticalSpacing="lg"
+                >
+                  <thead className="my-4">
+                    <tr>
+                      <th className="">POS</th>
+                      <th className="">RIDER</th>
+                      <th className="">NATION</th>
+                      <th className="">TEAM</th>
+                      <th className="">BIKE</th>
+                      <th className="">POINTS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {record?.map((item: any) => (
+                      <tr key={item.id} className="!py-4">
+                        <td>{item.classification_position}</td>
+                        <td>{item.classification_rider_full_name}</td>
+                        <td>{item.record_rider_country_name}</td>
+                        <td>{item.classification_team_name}</td>
+                        <td>{item.constructor_name}</td>
+                        <td>{item.points}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              )}
+            </>
           </div>
         ) : (
           <>
             <div className="flex justify-center items-center pt-10">
               <Loader size="xl" />
             </div>
-            <div className="h-52" />
+            <div className="h-96" />
           </>
         )}
       </div>

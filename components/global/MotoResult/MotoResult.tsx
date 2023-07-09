@@ -206,69 +206,56 @@ export default function MotoResult() {
         </div>
         {!loading ? (
           <div>
-            <Table
-              striped
-              highlightOnHover
-              className="max-h-96 min-w-[400px] !overflow-scroll overflow-x-auto"
-              verticalSpacing="lg"
-            >
-              <thead className="my-4">
-                <tr>
-                  <th className="">POS</th>
-                  <th className="">POINTS</th>
-                  <th className="">RIDER</th>
-                  <th className="">NATION</th>
-                  <th className="">TEAM</th>
-                  <th className="">BIKE</th>
-                  <th className="">KM.h</th>
-                  <th className="">TIME/GAP</th>
-                </tr>
-              </thead>
-              <tbody>
-                {record?.map((item: any) => (
-                  <tr key={item.id} className="!py-4">
-                    <td>{item.classification_position}</td>
-                    <td>{item.points}</td>
-                    <td>{item.classification_rider_full_name}</td>
-                    <td>{item.record_rider_country_name}</td>
-                    <td>{item.classification_team_name}</td>
-                    <td>{item.constructor_name}</td>
-                    <td>{item.record_speed}</td>
-                    <td>
-                      {item.time}/{item.gap_first}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-            {/* <div className="flex justify-center items-center mt-2">
-              <Button
-                variant="default"
-                disabled={page <= 1}
-                onClick={() => {
-                  if (page > 1) setPage(page - 1);
-                }}
-                className="mr-4"
-              >
-                Previous
-              </Button>
-              <Button
-                variant="default"
-                disabled={page >= 10}
-                onClick={() => {
-                  if (page < 10) setPage(page + 1);
-                }}
-              >
-                Next
-              </Button>
-            </div> */}
+            <>
+              {record.length < 1 ? (
+                <div className="h-96">
+                  <h1 className="text-center font-bold pt-20">Record not found :(</h1>
+                </div>
+              ) : (
+                <Table
+                  striped
+                  highlightOnHover
+                  className="max-h-96 min-w-[400px] !overflow-scroll overflow-x-auto"
+                  verticalSpacing="lg"
+                >
+                  <thead className="my-4">
+                    <tr>
+                      <th className="">POS</th>
+                      <th className="">POINTS</th>
+                      <th className="">RIDER</th>
+                      <th className="">NATION</th>
+                      <th className="">TEAM</th>
+                      <th className="">BIKE</th>
+                      <th className="">KM.h</th>
+                      <th className="">TIME/GAP</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {record?.map((item: any) => (
+                      <tr key={item.id} className="!py-4">
+                        <td>{item.classification_position}</td>
+                        <td>{item.points}</td>
+                        <td>{item.classification_rider_full_name}</td>
+                        <td>{item.record_rider_country_name}</td>
+                        <td>{item.classification_team_name}</td>
+                        <td>{item.constructor_name}</td>
+                        <td>{item.record_speed}</td>
+                        <td>
+                          {item.time}/{item.gap_first}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              )}
+            </>
           </div>
         ) : (
           <>
             <div className="flex justify-center items-center pt-10">
               <Loader size="xl" />
             </div>
-            <div className="h-52" />
+            <div className="h-96" />
           </>
         )}
       </div>
