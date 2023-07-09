@@ -1,10 +1,9 @@
-import MotoResult from "../components/global/MotoResult/MotoResult";
+import HomePage from '../components/HomePage/HomePage';
 
-
-export default function HomePage() {
+export default function Home() {
   return (
     <>
-    <MotoResult />
+      <HomePage />
     </>
   );
 }
