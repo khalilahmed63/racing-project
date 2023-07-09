@@ -1,25 +1,12 @@
-import {
-  Group,
-  ActionIcon,
-  Image,
-  Anchor,
-  createStyles,
-  rem,
-} from '@mantine/core';
+import { Group, ActionIcon, Image, Anchor, createStyles, rem } from '@mantine/core';
 import Link from 'next/link';
 // import { Link } from 'react-router-dom';
-import {
-  IconBrandTwitter,
-  IconBrandYoutube,
-  IconBrandInstagram,
-} from 'tabler-icons';
+import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from 'tabler-icons';
 
 const useStyles = createStyles((theme) => ({
   footer: {
     marginTop: rem(120),
-    borderTop: `${rem(1)} solid ${
-      theme.colorScheme === 'dark' ? 'white' : theme.colors.gray[2]
-    }`,
+    borderTop: `${rem(1)} solid ${theme.colorScheme === 'dark' ? 'white' : theme.colors.gray[2]}`,
   },
 
   inner: {

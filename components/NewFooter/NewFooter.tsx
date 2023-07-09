@@ -1,4 +1,12 @@
-import { createStyles, Text, Container, ActionIcon, Group, rem, useMantineTheme } from '@mantine/core';
+import {
+  createStyles,
+  Text,
+  Container,
+  ActionIcon,
+  Group,
+  rem,
+  useMantineTheme,
+} from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
 // import MantineLogo  from './public/MantineLogo.png';
 
@@ -105,27 +113,25 @@ interface FooterLinksProps {
   }[];
 }
 
+const FooterLinksProps = [
+  {
+    title: 'Group 1',
+    links: [
+      { label: 'Link 1', link: 'https://example.com/link1' },
+      { label: 'Link 2', link: 'https://example.com/link2' },
+    ],
+  },
+  {
+    title: 'Group 2',
+    links: [
+      { label: 'Link 3', link: 'https://example.com/link3' },
+      { label: 'Link 4', link: 'https://example.com/link4' },
+    ],
+  },
+];
 
-    const FooterLinksProps = [
-      {
-        title: 'Group 1',
-        links: [
-          { label: 'Link 1', link: 'https://example.com/link1' },
-          { label: 'Link 2', link: 'https://example.com/link2' },
-        ],
-      },
-      {
-        title: 'Group 2',
-        links: [
-          { label: 'Link 3', link: 'https://example.com/link3' },
-          { label: 'Link 4', link: 'https://example.com/link4' },
-        ],
-      },
-    ]
-  
-
-export function NewFooter({ data } : FooterLinksProps ) {
-    const theme = useMantineTheme();
+export function NewFooter({ data }: FooterLinksProps) {
+  const theme = useMantineTheme();
   const { classes } = useStyles();
 
   const groups = data.map((group) => {
@@ -153,12 +159,12 @@ export function NewFooter({ data } : FooterLinksProps ) {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-           {/* <MantineLogo size={30} /> */}
+          {/* <MantineLogo size={30} /> */}
           <Text size="xs" color="dimmed" className={classes.description}>
             Build fully functional accessible web applications faster than ever
           </Text>
         </div>
-        
+
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>

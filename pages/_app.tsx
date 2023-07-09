@@ -9,8 +9,6 @@ import NavigationHeader from '../components/global/Header/Header';
 import Footer from '../components/Footer';
 import { NewFooter } from '../components/NewFooter/NewFooter';
 
-
-
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
@@ -46,7 +44,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       ],
     },
   ];
-  
+
   return (
     <>
       <Head>
@@ -62,7 +60,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           <NavigationHeader />
           <Notifications />
           <NewFooter data={footerData} />
-          <Footer/>
+          <Footer />
         </MantineProvider>
       </ColorSchemeProvider>
     </>
