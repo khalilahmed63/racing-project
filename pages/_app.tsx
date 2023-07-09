@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
-import Head from 'next/head';
+import { NewFooter } from '../components/NewFooter/NewFooter';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
+import Head from 'next/head';
 import './globals.css';
 import NavigationHeader from '../components/global/Header/Header';
-import Footer from '../components/Footer';
-import { NewFooter } from '../components/NewFooter/NewFooter';
+
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -60,7 +60,6 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           <NavigationHeader />
           <Notifications />
           <NewFooter data={footerData} />
-          <Footer />
         </MantineProvider>
       </ColorSchemeProvider>
     </>
