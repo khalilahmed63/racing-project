@@ -1,12 +1,16 @@
-import { useState } from 'react';
-import NextApp, { AppProps, AppContext } from 'next/app';
-import { getCookie, setCookie } from 'cookies-next';
-import Head from 'next/head';
-import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
-import { Notifications } from '@mantine/notifications';
 import './globals.css';
-import NavigationHeader from '../components/Header/Header';
-import { Footer } from '../components/Footer/Footer';
+
+import type { ColorScheme } from '@mantine/core';
+import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
+import { getCookie, setCookie } from 'cookies-next';
+import type { AppContext, AppProps } from 'next/app';
+import NextApp from 'next/app';
+import Head from 'next/head';
+import { useState } from 'react';
+
+import { Footer } from '@/components/Footer/Footer';
+import NavigationHeader from '@/components/Header/Header';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
