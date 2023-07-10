@@ -113,7 +113,7 @@ export default function Standing() {
                 />
               </div>
               <p
-                className="-mb-6 cursor-pointer hover:text-blue-600"
+                className="my-2 sm:-mb-6 cursor-pointer hover:text-blue-600"
                 onClick={() => {
                   setSelectedYear('');
                   setCategory('');
