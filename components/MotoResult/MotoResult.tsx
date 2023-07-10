@@ -157,7 +157,6 @@ export default function MotoResult() {
                   label="EVENT"
                   placeholder="Pick one"
                   onChange={setEvent}
-                  // searchValue={event}
                   nothingFound="No options"
                   data={eventList}
                 />
@@ -168,7 +167,6 @@ export default function MotoResult() {
                   label="Category"
                   placeholder="Pick one"
                   onChange={setCategory}
-                  // searchValue={category}
                   nothingFound="No options"
                   data={categoryList}
                 />
@@ -177,7 +175,6 @@ export default function MotoResult() {
                   label="Sessions"
                   placeholder="Pick one"
                   onChange={setSession}
-                  // searchValue={session}
                   nothingFound="No options"
                   data={sessionList}
                 />
