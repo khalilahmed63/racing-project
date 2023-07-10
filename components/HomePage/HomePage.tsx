@@ -4,7 +4,7 @@ import { Card, Image, Text } from '@mantine/core';
 export default function HomePage() {
   return (
     <div className="px-5 sm:px-0">
-      <div className="container max-w-screen-xl mx-auto pt-16 pb-10 overflow-auto">
+      <div className="container mx-auto max-w-screen-xl overflow-auto pb-10 pt-16">
         <h1 className="mb-3">NEWS</h1>
         <Carousel
           withIndicators
@@ -20,7 +20,7 @@ export default function HomePage() {
         >
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -47,7 +47,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -74,7 +74,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -101,7 +101,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -128,7 +128,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -155,7 +155,7 @@ export default function HomePage() {
           </Carousel.Slide>
         </Carousel>
       </div>
-      <div className="container max-w-screen-xl mx-auto pb-10 overflow-auto">
+      <div className="container mx-auto max-w-screen-xl overflow-auto pb-10">
         <h1 className="mb-3">FORMULA UNO SCHEDULE</h1>
         <Carousel
           withIndicators
@@ -171,7 +171,7 @@ export default function HomePage() {
         >
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -198,7 +198,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -225,7 +225,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -252,7 +252,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -279,7 +279,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -306,7 +306,7 @@ export default function HomePage() {
           </Carousel.Slide>
         </Carousel>
       </div>
-      <div className="container max-w-screen-xl mx-auto pb-10 overflow-auto">
+      <div className="container mx-auto max-w-screen-xl overflow-auto pb-10">
         <h1 className="mb-3">MOTOGP SHEDULE</h1>
         <Carousel
           withIndicators
@@ -322,7 +322,7 @@ export default function HomePage() {
         >
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -349,7 +349,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -376,7 +376,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -403,7 +403,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"
@@ -430,7 +430,7 @@ export default function HomePage() {
           </Carousel.Slide>
           <Carousel.Slide>
             <Card
-              className="min-w-max w-full mx-auto sm:w-80 max-h-64"
+              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
               shadow="sm"
               withBorder
               padding="sm"

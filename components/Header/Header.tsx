@@ -113,16 +113,16 @@ export default function NavigationHeader() {
                 opened ? 'block' : 'hidden'
               } absolute bg-white w-full text-center mt-64 lg:hidden shadow-lg p-10 duration-300`}
             >
-              <Link href="/" className={classes.link}>
+              <Link href="/" className={`${classes.link} text-black`}>
                 HOME
               </Link>
-              <Link href="/motogp-race-result" className={`${classes.link} py-3`}>
+              <Link href="/motogp-race-result" className={`${classes.link} text-black`}>
                 RACE RESULT
               </Link>
-              <Link href="/standing" className={`${classes.link} py-3`}>
+              <Link href="/standing" className={`${classes.link} text-black`}>
                 STANDING
               </Link>
-              <Link href="#" className={classes.link}>
+              <Link href="#" className={`${classes.link} text-black`}>
                 CONTACT
               </Link>
             </div>
