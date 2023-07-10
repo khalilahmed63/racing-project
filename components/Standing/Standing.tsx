@@ -11,7 +11,7 @@ export default function Standing() {
   const [category, setCategory] = useState('');
   const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
 
-  const fetchRecordsAPI = `https://racingmike.com/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=${
+  const fetchRecordsAPI = `https://racingmike.com/api/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=${
     selectedYear || '2023'
   }&categoryid=${category || 'e8c110ad-64aa-4e8e-8a86-f2f152f6a942'}`;
 

@@ -8,20 +8,25 @@ import axios from 'axios';
 import Link from 'next/link';
 
 export default function MotoResult() {
-  const [category, setCategory] = useState('');
-  const [event, setEvent] = useState('');
-  const [session, setSession] = useState('');
+  const [category, setCategory] = useState<any>('');
+  const [event, setEvent] = useState<any>('');
+  const [session, setSession] = useState<any>('');
+  const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
 
-  const fetchRecordsAPI = `https://racingmike.com/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&eventid=${
-    event || '8ed52491-e1aa-49a9-8d70-f1c1f8dd3090'
-  }&categoryid=${category || 'e8c110ad-64aa-4e8e-8a86-f2f152f6a942'}&session=${session || 'RAC'}`;
+  console.log(event, 'event');
+  console.log(category, 'category');
+
+  const fetchRecordsAPI = `https://racingmike.com/api/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
+    selectedYear && `&year=${selectedYear}`
+  }${event && `&eventid=${event}`}${category && `&categoryid=${category}`}${
+    session && `&session=${session}`
+  }`;
 
   const [record, setRecord] = useState<any>([]);
   const [categories, setCategories] = useState<any>([]);
   const [events, setEvents] = useState<any>([]);
   const [page, setPage] = useState<any>(1);
   const [loading, setLoading] = useState<any>(false);
-  const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
 
   const startYear = new Date().getFullYear();
   const endYear = startYear - 73;
@@ -49,7 +54,7 @@ export default function MotoResult() {
   const fetchEvent = async () => {
     try {
       const response = await axios.get(
-        'https://racingmike.com/v1.0/motogp-events?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=2023'
+        'https://racingmike.com/api/v1.0/motogp-events?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=2023'
       );
       setEvents(response?.data);
     } catch (error) {
@@ -60,8 +65,9 @@ export default function MotoResult() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        'https://racingmike.com/v1.0/motogp-category?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=2023'
+        'https://racingmike.com/api/v1.0/motogp-category?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=2023'
       );
+      console.log(response, 'response');
       setCategories(response?.data);
     } catch (error) {
       console.log(error);
@@ -81,7 +87,7 @@ export default function MotoResult() {
   }, []);
 
   const categoryList = categories?.reduce((uniqueItem: any[], item: any) => {
-    const isDuplicate = uniqueItem.some((listitem) => listitem.value === item.session_id);
+    const isDuplicate = uniqueItem.some((listitem) => listitem.value === item.id);
     if (!isDuplicate) {
       uniqueItem.push({
         value: item.id,
@@ -91,6 +97,9 @@ export default function MotoResult() {
 
     return uniqueItem;
   }, []);
+
+  console.log(categoryList, 'categoryList');
+  console.log(eventList, 'eventList');
 
   const sessionList = [
     { value: 'RAC', label: 'RAC' },
@@ -138,7 +147,6 @@ export default function MotoResult() {
                   label="Year"
                   placeholder="Select year"
                   searchable
-                  clearable
                   value={selectedYear}
                   onChange={handleYearChange}
                   nothingFound="No options"
@@ -148,10 +156,8 @@ export default function MotoResult() {
                   className="w-44"
                   label="EVENT"
                   placeholder="Pick one"
-                  searchable
-                  clearable
-                  onSearchChange={setEvent}
-                  searchValue={event}
+                  onChange={setEvent}
+                  // searchValue={event}
                   nothingFound="No options"
                   data={eventList}
                 />
@@ -161,10 +167,8 @@ export default function MotoResult() {
                   className="w-24"
                   label="Category"
                   placeholder="Pick one"
-                  searchable
-                  clearable
-                  onSearchChange={setCategory}
-                  searchValue={category}
+                  onChange={setCategory}
+                  // searchValue={category}
                   nothingFound="No options"
                   data={categoryList}
                 />
@@ -172,10 +176,8 @@ export default function MotoResult() {
                   className="w-24"
                   label="Sessions"
                   placeholder="Pick one"
-                  searchable
-                  clearable
-                  onSearchChange={setSession}
-                  searchValue={session}
+                  onChange={setSession}
+                  // searchValue={session}
                   nothingFound="No options"
                   data={sessionList}
                 />
