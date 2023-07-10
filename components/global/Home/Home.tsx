@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react';
-import { Box, Button, Loader, LoadingOverlay, MultiSelect, Select, Table } from '@mantine/core';
+import { Loader, Select, Table } from '@mantine/core';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [category, setCategory] = useState('');
@@ -16,6 +16,7 @@ export default function Home() {
   const [categories, setCategories] = useState<any>([]);
   const [sessions, setSessions] = useState<any>([]);
   const [events, setEvents] = useState<any>([]);
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const [page, setPage] = useState<any>(1);
   const [loading, setLoading] = useState<any>(false);
   const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
@@ -124,9 +125,9 @@ export default function Home() {
   }, [page, category, event, session]);
 
   return (
-    <div className="max-w-screen-lg mx-auto  pt-24">
-      <h1 className="text-2xl font-bold text-center mb-2">MOTOGP RACE RESULT</h1>
-      <div className="flex justify-center gap-5 mb-10 ">
+    <div className="mx-auto max-w-screen-lg  pt-24">
+      <h1 className="mb-2 text-center text-2xl font-bold">MOTOGP RACE RESULT</h1>
+      <div className="mb-10 flex justify-center gap-5 ">
         <Select
           label="Year"
           placeholder="Select year"
@@ -221,7 +222,7 @@ export default function Home() {
           </div> */}
         </div>
       ) : (
-        <div className="flex justify-center items-center pt-10">
+        <div className="flex items-center justify-center pt-10">
           <Loader size="xl" />
         </div>
       )}

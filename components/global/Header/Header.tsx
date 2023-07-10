@@ -1,6 +1,7 @@
-import { Autocomplete, Group, Header, Image, createStyles, rem } from '@mantine/core';
+import { Autocomplete, createStyles, Group, Header, Image, rem } from '@mantine/core';
 import Link from 'next/link';
 import { IconSearch } from 'tabler-icons';
+
 import { ColorSchemeToggle } from '../Common/ColorSchemeToggle';
 
 const useStyles = createStyles((theme) => ({

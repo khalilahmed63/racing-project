@@ -1,13 +1,16 @@
-import { useState } from 'react';
-import NextApp, { AppProps, AppContext } from 'next/app';
-import { getCookie, setCookie } from 'cookies-next';
-import Head from 'next/head';
-import { MantineProvider, ColorScheme, ColorSchemeProvider, Header } from '@mantine/core';
-import { Notifications } from '@mantine/notifications';
 import './globals.css';
+
+import type { ColorScheme } from '@mantine/core';
+import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
+import { getCookie, setCookie } from 'cookies-next';
+import type { AppContext, AppProps } from 'next/app';
+import NextApp from 'next/app';
+import Head from 'next/head';
+import { useState } from 'react';
+
 import NavigationHeaderVariant from '../components/global/Header/Header';
 import Home from '../components/global/Home/Home';
-
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -35,9 +38,8 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           <Notifications />
         </MantineProvider>
       </ColorSchemeProvider>
-      <Home/>
+      <Home />
     </>
-
   );
 }
 
