@@ -23,7 +23,7 @@ export default function MotoResult() {
   const [record, setRecord] = useState<any>([]);
   const [categories, setCategories] = useState<any>([]);
   const [events, setEvents] = useState<any>([]);
-  // eslint-disable-next-line unused-imports/no-unused-vars
+  // eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-unused-vars
   const [page, setPage] = useState<any>(1);
   const [loading, setLoading] = useState<any>(false);
 
