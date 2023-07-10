@@ -8,12 +8,12 @@ import axios from 'axios';
 import Link from 'next/link';
 
 export default function Standing() {
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState<any>('');
   const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
 
-  const fetchRecordsAPI = `https://racingmike.com/api/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=${
-    selectedYear || '2023'
-  }&categoryid=${category || 'e8c110ad-64aa-4e8e-8a86-f2f152f6a942'}`;
+  const fetchRecordsAPI = `https://racingmike.com/api/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
+    selectedYear && `&year=${selectedYear}`
+  }${category && `&categoryid=${category}`}`;
 
   const [record, setRecord] = useState<any>([]);
   const [categories, setCategories] = useState<any>([]);
@@ -46,7 +46,7 @@ export default function Standing() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        'https://racingmike.com/v1.0/motogp-category?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=2023'
+        'https://racingmike.com/api/v1.0/motogp-category?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=2023'
       );
       setCategories(response?.data);
     } catch (error) {
@@ -55,7 +55,7 @@ export default function Standing() {
   };
 
   const categoryList = categories?.reduce((uniqueItem: any[], item: any) => {
-    const isDuplicate = uniqueItem.some((listitem) => listitem.value === item.session_id);
+    const isDuplicate = uniqueItem.some((listitem) => listitem.value === item.id);
     if (!isDuplicate) {
       uniqueItem.push({
         value: item.id,
@@ -107,16 +107,13 @@ export default function Standing() {
                   className="w-44"
                   label="Category"
                   placeholder="Pick one"
-                  searchable
-                  clearable
-                  onSearchChange={setCategory}
-                  searchValue={category}
+                  onChange={setCategory}
                   nothingFound="No options"
                   data={categoryList}
                 />
               </div>
               <p
-                className="-mb-6 cursor-pointer hover:text-blue-600"
+                className="my-2 sm:-mb-6 cursor-pointer hover:text-blue-600"
                 onClick={() => {
                   setSelectedYear('');
                   setCategory('');

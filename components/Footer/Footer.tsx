@@ -143,7 +143,7 @@ export function Footer() {
   });
 
   return (
-    <footer className={`${classes.footer}`}>
+    <footer className={`${classes.footer} px-5 sm:px-0`}>
       <div className="mx-auto flex max-w-screen-xl items-center justify-between pb-6">
         <div className={`${classes.logo} mx-auto sm:mx-0`}>
           <div className="">
