@@ -192,7 +192,7 @@ export default function MotoResult() {
               </p>
             </div>
           </div>
-          <div className="p-2 px-2 bg-[#1A1B1E] sm:flex justify-between border">
+          <div className="py-2 px-5 bg-[#1A1B1E] sm:flex justify-between border">
             <div className="flex mb-3 sm:mb-0">
               <p className="text-xs text-white">TT Circuit Assen , June 25th 2023</p>
             </div>

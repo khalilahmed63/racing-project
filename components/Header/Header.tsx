@@ -1,5 +1,6 @@
-import { Group, Header, Image, createStyles, rem } from '@mantine/core';
+import { Burger, Group, Header, Image, createStyles, rem } from '@mantine/core';
 import Link from 'next/link';
+import { useState } from 'react';
 import { ColorSchemeToggle } from '../Common/ColorSchemeToggle';
 
 const useStyles = createStyles((theme) => ({
@@ -10,9 +11,6 @@ const useStyles = createStyles((theme) => ({
 
   inner: {
     height: rem(56),
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
 
   links: {
@@ -45,18 +43,20 @@ const useStyles = createStyles((theme) => ({
 
 export default function NavigationHeader() {
   const { classes } = useStyles();
+  const [opened, setOpened] = useState(false);
 
   return (
     <>
       <div className="fixed top-0 z-[100] w-full ">
         <Header height={56} className={classes.header} mb={120}>
-          <div className={`${classes.inner} max-w-screen-xl mx-auto`}>
+          <div
+            className={`${classes.inner} flex justify-between items-center max-w-screen-xl mx-auto`}
+          >
             <Group>
               <Link href="/" passHref>
                 <Image alt="logo" height={25} src="/favicon.svg" />
               </Link>
             </Group>
-
             <Group>
               <Group ml={50} spacing={5} className={classes.links}>
                 <Link href="/" className={classes.link}>
@@ -100,6 +100,32 @@ export default function NavigationHeader() {
                 <ColorSchemeToggle />
               </div>
             </Group>
+            <div className="lg:hidden">
+              <Burger
+                opened={opened}
+                onClick={() => {
+                  setOpened(!opened);
+                }}
+              />
+            </div>
+            <div
+              className={`${
+                opened ? 'block' : 'hidden'
+              } absolute bg-white w-full text-center mt-64 lg:hidden shadow-lg p-10 duration-300`}
+            >
+              <Link href="/" className={classes.link}>
+                HOME
+              </Link>
+              <Link href="/motogp-race-result" className={`${classes.link} py-3`}>
+                RACE RESULT
+              </Link>
+              <Link href="/standing" className={`${classes.link} py-3`}>
+                STANDING
+              </Link>
+              <Link href="#" className={classes.link}>
+                CONTACT
+              </Link>
+            </div>
           </div>
         </Header>
       </div>
