@@ -9,8 +9,8 @@ import NextApp from 'next/app';
 import Head from 'next/head';
 import { useState } from 'react';
 
-import NavigationHeaderVariant from '../components/global/Header/Header';
-import Home from '../components/global/Home/Home';
+import { Footer } from '../components/Footer/Footer';
+import NavigationHeader from '../components/Header/Header';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -32,13 +32,13 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-          <NavigationHeaderVariant>
-            <Component {...pageProps} />
-          </NavigationHeaderVariant>
+          <NavigationHeader />
+          <Component {...pageProps} />
+          <NavigationHeader />
           <Notifications />
+          <Footer />
         </MantineProvider>
       </ColorSchemeProvider>
-      <Home />
     </>
   );
 }
