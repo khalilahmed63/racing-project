@@ -1,12 +1,12 @@
 module.exports = {
   // Configuration for JavaScript files
-  "extends": [
+  extends: [
     "airbnb-base",
     "next/core-web-vitals", // Needed to avoid warning in next.js build: 'The Next.js plugin was not detected in your ESLint configuration'
     "plugin:prettier/recommended",
     "mantine"
   ],
-  "rules": {
+  rules: {
     "prettier/prettier": [
       "error",
       {
@@ -15,17 +15,17 @@ module.exports = {
       }
     ]
   },
-  "overrides": [
+  overrides: [
     // Configuration for TypeScript files
     {
-      "files": ["**/*.ts", "**/*.tsx"],
-      "plugins": [
+      files: ["**/*.ts", "**/*.tsx"],
+      plugins: [
         "@typescript-eslint",
         "unused-imports",
         "tailwindcss",
         "simple-import-sort"
       ],
-      "extends": [
+      extends: [
         "plugin:tailwindcss/recommended",
         "airbnb",
         "airbnb-typescript",
@@ -33,10 +33,10 @@ module.exports = {
         "next/core-web-vitals",
         "plugin:prettier/recommended"
       ],
-      "parserOptions": {
-        "project": "./tsconfig.json"
+      parserOptions: {
+        project: "./tsconfig.json"
       },
-      "rules": {
+      rules: {
         "prettier/prettier": [
           "error",
           {
@@ -61,19 +61,16 @@ module.exports = {
         "import/prefer-default-export": "off", // Named export is easier to refactor automatically
         "simple-import-sort/imports": "error", // Import configuration for `eslint-plugin-simple-import-sort`
         "simple-import-sort/exports": "error", // Export configuration for `eslint-plugin-simple-import-sort`
-        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ['error', { 'varsIgnorePattern': '^_', "argsIgnorePattern": "^_" }],
         "unused-imports/no-unused-imports": "error",
-        "unused-imports/no-unused-vars": [
-          "error",
-          { "argsIgnorePattern": "^_" }
-        ]
+        "unused-imports/no-unused-vars": "off"
       }
     },
     // Configuration for testing
     {
-      "files": ["**/*.test.ts", "**/*.test.tsx"],
-      "plugins": ["jest", "jest-formatting", "testing-library", "jest-dom"],
-      "extends": [
+      files: ["**/*.test.ts", "**/*.test.tsx"],
+      plugins: ["jest", "jest-formatting", "testing-library", "jest-dom"],
+      extends: [
         "plugin:jest/recommended",
         "plugin:jest-formatting/recommended",
         "plugin:testing-library/react",
@@ -82,18 +79,18 @@ module.exports = {
     },
     // Configuration for e2e testing (Cypress)
     {
-      "files": ["cypress/**/*.ts"],
-      "plugins": ["cypress"],
-      "extends": ["plugin:cypress/recommended"],
-      "parserOptions": {
-        "project": "./cypress/tsconfig.json"
+      files: ["cypress/**/*.ts"],
+      plugins: ["cypress"],
+      extends: ["plugin:cypress/recommended"],
+      parserOptions: {
+        project: "./cypress/tsconfig.json"
       }
     },
     // Configuration for Storybook
     {
-      "files": ["*.stories.*"],
-      "extends": ["plugin:storybook/recommended"],
-      "rules": {
+      files: ["*.stories.*"],
+      extends: ["plugin:storybook/recommended"],
+      rules: {
         "import/no-extraneous-dependencies": [
           "error",
           {

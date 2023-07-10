@@ -1,11 +1,9 @@
-/* eslint-disable no-console */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { BackgroundImage, Loader, Select, Table } from '@mantine/core';
 import axios from 'axios';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function MotoResult() {
   const [category, setCategory] = useState<any>('');
@@ -25,6 +23,7 @@ export default function MotoResult() {
   const [record, setRecord] = useState<any>([]);
   const [categories, setCategories] = useState<any>([]);
   const [events, setEvents] = useState<any>([]);
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const [page, setPage] = useState<any>(1);
   const [loading, setLoading] = useState<any>(false);
 
@@ -124,23 +123,23 @@ export default function MotoResult() {
 
   return (
     <div className="px-5 sm:px-0">
-      <div className="max-w-screen-xl mx-auto">
+      <div className="mx-auto max-w-screen-xl">
         <BackgroundImage src="/motogpbanner2.jpg">
-          <div className="h-40 mt-14 bg-black/50">
-            <h1 className="z-50 text-white text-4xl font-bold text-center pt-14">
+          <div className="mt-14 h-40 bg-black/50">
+            <h1 className="z-50 pt-14 text-center text-4xl font-bold text-white">
               MOTOGP RACE RESULT
             </h1>{' '}
           </div>
         </BackgroundImage>
         <div className="">
-          <div className="w-full sm:flex justify-between p-4">
+          <div className="w-full justify-between p-4 sm:flex">
             <div className="">
-              <h1 className="text-xl font-bold mb-3">Motul TT Assen</h1>
-              <Link href="#" target="_blank" passHref>
+              <h1 className="mb-3 text-xl font-bold">Motul TT Assen</h1>
+              <Link href="/#" target="_blank" passHref>
                 <p className="underline">MotoGP™ RAC Classification 2023</p>
               </Link>
             </div>
-            <div className="sm:flex gap-5 mt-4 pb-6 sm:mt-0 items-center sm:px-5 justify-end">
+            <div className="mt-4 items-center justify-end gap-5 pb-6 sm:mt-0 sm:flex sm:px-5">
               <div className="flex gap-5">
                 <Select
                   className="w-24"
@@ -195,67 +194,65 @@ export default function MotoResult() {
               </p>
             </div>
           </div>
-          <div className="p-2 px-2 bg-[#1A1B1E] sm:flex justify-between border">
-            <div className="flex mb-3 sm:mb-0">
+          <div className="justify-between border bg-[#1A1B1E] p-2 sm:flex">
+            <div className="mb-3 flex sm:mb-0">
               <p className="text-xs text-white">TT Circuit Assen , June 25th 2023</p>
             </div>
             <div className="flex">
-              <p className="text-xs text-white mb-3 sm:mb-0 mx-1">30º C</p>
-              <p className="text-xs text-white mb-3 sm:mb-0 ml-2">Clear</p>
-              <p className="text-xs text-white mb-3 sm:mb-0 ml-2">Track condition: Dry</p>
-              <p className="text-xs text-white mb-3 sm:mb-0 ml-2">Humidity: 32%</p>
-              <p className="text-xs text-white mb-3 sm:mb-0 ml-2">Ground: 47º</p>
+              <p className="mx-1 mb-3 text-xs text-white sm:mb-0">30º C</p>
+              <p className="mb-3 ml-2 text-xs text-white sm:mb-0">Clear</p>
+              <p className="mb-3 ml-2 text-xs text-white sm:mb-0">Track condition: Dry</p>
+              <p className="mb-3 ml-2 text-xs text-white sm:mb-0">Humidity: 32%</p>
+              <p className="mb-3 ml-2 text-xs text-white sm:mb-0">Ground: 47º</p>
             </div>
           </div>
           {!loading ? (
             <div>
-              <>
-                {record.length < 1 ? (
-                  <div className="h-96">
-                    <h1 className="text-center font-bold pt-20">Record not found :(</h1>
-                  </div>
-                ) : (
-                  <Table
-                    striped
-                    highlightOnHover
-                    className="max-h-96 min-w-[400px] !overflow-scroll overflow-x-auto"
-                    verticalSpacing="lg"
-                  >
-                    <thead className="my-4">
-                      <tr>
-                        <th className="">POS</th>
-                        <th className="">POINTS</th>
-                        <th className="">RIDER</th>
-                        <th className="">NATION</th>
-                        <th className="">TEAM</th>
-                        <th className="">BIKE</th>
-                        <th className="">KM.h</th>
-                        <th className="">TIME/GAP</th>
+              {record.length < 1 ? (
+                <div className="h-96">
+                  <h1 className="pt-20 text-center font-bold">Record not found :(</h1>
+                </div>
+              ) : (
+                <Table
+                  striped
+                  highlightOnHover
+                  className="max-h-96 min-w-[400px] !overflow-scroll overflow-x-auto"
+                  verticalSpacing="lg"
+                >
+                  <thead className="my-4">
+                    <tr>
+                      <th className="">POS</th>
+                      <th className="">POINTS</th>
+                      <th className="">RIDER</th>
+                      <th className="">NATION</th>
+                      <th className="">TEAM</th>
+                      <th className="">BIKE</th>
+                      <th className="">KM.h</th>
+                      <th className="">TIME/GAP</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {record?.map((item: any) => (
+                      <tr key={item.id} className="!py-4">
+                        <td>{item.classification_position}</td>
+                        <td>{item.points}</td>
+                        <td>{item.classification_rider_full_name}</td>
+                        <td>{item.record_rider_country_name}</td>
+                        <td>{item.classification_team_name}</td>
+                        <td>{item.constructor_name}</td>
+                        <td>{item.record_speed}</td>
+                        <td>
+                          {item.time}/{item.gap_first}
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {record?.map((item: any) => (
-                        <tr key={item.id} className="!py-4">
-                          <td>{item.classification_position}</td>
-                          <td>{item.points}</td>
-                          <td>{item.classification_rider_full_name}</td>
-                          <td>{item.record_rider_country_name}</td>
-                          <td>{item.classification_team_name}</td>
-                          <td>{item.constructor_name}</td>
-                          <td>{item.record_speed}</td>
-                          <td>
-                            {item.time}/{item.gap_first}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </Table>
-                )}
-              </>
+                    ))}
+                  </tbody>
+                </Table>
+              )}
             </div>
           ) : (
             <>
-              <div className="flex justify-center items-center pt-10">
+              <div className="flex items-center justify-center pt-10">
                 <Loader size="xl" />
               </div>
               <div className="h-96" />

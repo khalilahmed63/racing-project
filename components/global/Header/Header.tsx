@@ -2,7 +2,7 @@ import { Autocomplete, createStyles, Group, Header, Image, rem } from '@mantine/
 import Link from 'next/link';
 import { IconSearch } from 'tabler-icons';
 
-import { ColorSchemeToggle } from '../Common/ColorSchemeToggle';
+import { ColorSchemeToggle } from '@/components/Common/ColorSchemeToggle';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -101,7 +101,7 @@ export default function NavigationHeader() {
           </Group>
           <Group>
             <div className="mb-6">
-              <ColorSchemeToggle />
+              <ColorSchemeToggle />{' '}
             </div>
           </Group>
         </div>

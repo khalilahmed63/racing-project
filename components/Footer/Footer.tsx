@@ -1,5 +1,5 @@
-import { createStyles, Text, ActionIcon, Group, rem, Image } from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
+import { ActionIcon, createStyles, Group, Image, rem, Text } from '@mantine/core';
+import { IconBrandInstagram, IconBrandTwitter, IconBrandYoutube } from '@tabler/icons-react';
 import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
@@ -122,9 +122,9 @@ export function Footer() {
   const { classes } = useStyles();
 
   const groups = footerData.map((group) => {
-    const links = group.links.map((link, index) => (
-      <Text<'a'>
-        key={index}
+    const links = group.links.map((link) => (
+      <Text
+        key={link.link}
         className={classes.link}
         component="a"
         href={link.link}
@@ -144,7 +144,7 @@ export function Footer() {
 
   return (
     <footer className={`${classes.footer}`}>
-      <div className="flex justify-between items-center max-w-screen-xl mx-auto pb-6">
+      <div className="mx-auto flex max-w-screen-xl items-center justify-between pb-6">
         <div className={`${classes.logo} mx-auto sm:mx-0`}>
           <div className="">
             <Link href="/" passHref>
@@ -157,7 +157,7 @@ export function Footer() {
         </div>
         <div className={classes.groups}>{groups}</div>
       </div>
-      <div className="flex justify-between items-center max-w-screen-xl mx-auto border-t pt-4">
+      <div className="mx-auto flex max-w-screen-xl items-center justify-between border-t pt-4">
         <Text color="dimmed" size="sm">
           © 2020 mantine.dev. All rights reserved.
         </Text>

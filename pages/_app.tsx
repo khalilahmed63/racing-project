@@ -9,8 +9,8 @@ import NextApp from 'next/app';
 import Head from 'next/head';
 import { useState } from 'react';
 
-import { Footer } from '../components/Footer/Footer';
-import NavigationHeader from '../components/Header/Header';
+import { Footer } from '@/components/Footer/Footer';
+import NavigationHeader from '@/components/Header/Header';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
