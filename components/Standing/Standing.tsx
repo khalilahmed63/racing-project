@@ -144,9 +144,11 @@ export default function Standing() {
             <div>
               <>
                 {record?.length === 0 ? (
-                  <div className="h-96">
-                    <h1 className="text-center font-bold pt-20">Record not found :(</h1>
-                  </div>
+                  <>
+                    <div className="h-96">
+                      <h1 className="text-center font-bold pt-20">Record not found :(</h1>
+                    </div>
+                  </>
                 ) : (
                   <Card shadow="xl" p="lg" radius="md" className="overflow-x-auto w-full">
                     <div className="py-2 px-5 flex justify-between border w-full min-w-[800px]">
