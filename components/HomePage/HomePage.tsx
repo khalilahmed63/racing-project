@@ -2,6 +2,22 @@ import { Carousel } from '@mantine/carousel';
 import { Card, Image, Text } from '@mantine/core';
 
 export default function HomePage() {
+  const schedule = {
+    name: 'GRAND PRIX DE FRANCE',
+    sponsored_name: 'SHARK Grand Prix de France',
+    date_start: '2023-05-12',
+    date_end: '2023-05-14',
+    country_iso: 'FR',
+    country_name: 'France',
+    circuit_name: 'Le Mans',
+    circuit_place: 'Le Mans',
+    circuit_nation: 'FRA',
+    event_files_circuit_information_url:
+      'https://resources.motogp.com/files/results/2023/FRA/CircuitInformation.pdf',
+    short_name: 'FRA',
+    year: '2023',
+  };
+
   return (
     <div className="px-5 sm:px-0">
       <div className="container mx-auto max-w-screen-xl overflow-auto pb-10 pt-16">

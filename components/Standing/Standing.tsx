@@ -10,8 +10,7 @@ import Link from 'next/link';
 export default function Standing() {
   const [category, setCategory] = useState<any>('');
   const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
-
-  const fetchRecordsAPI = `https://racingmike.com/api/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
+  const fetchRecordsAPI = `https://racingmike.com/api/v1.0/motogp-world-standing-riders?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
     selectedYear && `&year=${selectedYear}`
   }${category && `&categoryid=${category}`}`;
 
@@ -36,7 +35,7 @@ export default function Standing() {
       const response = await axios.get(`${fetchRecordsAPI}`);
       setRecord(response?.data);
       setLoading(false);
-      // console.log(response, 'response');
+      console.log(response, 'response');
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -164,10 +163,10 @@ export default function Standing() {
                         <tr key={item.id} className="!py-4">
                           <td>{item.classification_position}</td>
                           <td>{item.classification_rider_full_name}</td>
-                          <td>{item.record_rider_country_name}</td>
+                          <td>{item.classification_rider_country_iso}</td>
                           <td>{item.classification_team_name}</td>
-                          <td>{item.constructor_name}</td>
-                          <td>{item.points}</td>
+                          <td>{item.classification_constructor_name}</td>
+                          <td>{item.classification_points_id}</td>
                         </tr>
                       ))}
                     </tbody>
