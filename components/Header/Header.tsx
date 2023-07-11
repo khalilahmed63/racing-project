@@ -1,4 +1,4 @@
-import { Burger, Group, Header, Image, createStyles, rem } from '@mantine/core';
+import { Burger, Card, Group, Header, Image, createStyles, rem } from '@mantine/core';
 import Link from 'next/link';
 import { useState } from 'react';
 import { ColorSchemeToggle } from '../Common/ColorSchemeToggle';
@@ -110,24 +110,27 @@ export default function NavigationHeader() {
             </div>
           </div>
         </Header>
-        <div
+        <Card
+          shadow="xl"
+          p="lg"
+          radius="md"
           className={`${
             opened ? 'block' : 'hidden'
-          } absolute top-14 bg-white w-full text-center lg:hidden shadow-lg p-10 duration-300`}
+          } absolute top-14 w-full text-center lg:hidden shadow-lg p-10 duration-300`}
         >
-          <Link href="/" className={`${classes.link} text-black`}>
+          <Link href="/" className={`${classes.link}`}>
             HOME
           </Link>
-          <Link href="/motogp-race-result" className={`${classes.link} text-black`}>
+          <Link href="/motogp-race-result" className={`${classes.link}`}>
             RACE RESULT
           </Link>
-          <Link href="/standing" className={`${classes.link} text-black`}>
+          <Link href="/standing" className={`${classes.link}`}>
             STANDING
           </Link>
-          <Link href="#" className={`${classes.link} text-black`}>
+          <Link href="#" className={`${classes.link}`}>
             CONTACT
           </Link>
-        </div>
+        </Card>
       </div>
     </>
   );
