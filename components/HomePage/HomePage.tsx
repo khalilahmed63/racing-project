@@ -39,11 +39,11 @@ export default function HomePage() {
                 </Card.Section>
 
                 <Text weight={500} size="lg" mt="xs">
-                  {item?.title.slice(0, 30)}...
+                  {item?.title.slice(0, 25)}...
                 </Text>
 
                 <Text mt={0} color="dimmed" size="sm">
-                  {item?.description.slice(0, 40)}...
+                  {item?.description.slice(0, 35)}...
                 </Text>
               </Card>
             </Carousel.Slide>

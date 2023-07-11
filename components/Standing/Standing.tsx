@@ -9,12 +9,12 @@ import Link from 'next/link';
 
 export default function Standing() {
   const [category, setCategory] = useState<any>('');
-  const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
+  const [selectedYear, setSelectedYear] = useState<any | undefined>('');
   const fetchRecordsAPI = `https://racingmike.com/api/v1.0/motogp-world-standing-riders?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
     selectedYear && `&year=${selectedYear}`
   }${category && `&categoryid=${category}`}`;
 
-  const [record, setRecord] = useState<any>([]);
+  const [record, setRecord] = useState<any | undefined>([]);
   const [categories, setCategories] = useState<any>([]);
   const [page, setPage] = useState<any>(1);
   const [loading, setLoading] = useState<any>(false);
@@ -35,7 +35,7 @@ export default function Standing() {
       const response = await axios.get(`${fetchRecordsAPI}`);
       setRecord(response?.data);
       setLoading(false);
-      console.log(response, 'response');
+      // console.log(response, 'response');
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -137,7 +137,7 @@ export default function Standing() {
           {!loading ? (
             <div>
               <>
-                {record.length < 1 ? (
+                {record?.length === 0 ? (
                   <div className="h-96">
                     <h1 className="text-center font-bold pt-20">Record not found :(</h1>
                   </div>

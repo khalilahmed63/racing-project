@@ -9,7 +9,8 @@ export default function MotoResult() {
   const [category, setCategory] = useState<any>('');
   const [event, setEvent] = useState<any>('');
   const [session, setSession] = useState<any>('');
-  const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
+  // const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
+  const [selectedYear, setSelectedYear] = useState<string>();
 
   console.log(event, 'event');
   console.log(category, 'category');
