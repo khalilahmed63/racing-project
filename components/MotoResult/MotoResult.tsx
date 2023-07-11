@@ -9,7 +9,6 @@ export default function MotoResult() {
   const [category, setCategory] = useState<any>('');
   const [event, setEvent] = useState<any>('');
   const [session, setSession] = useState<any>('');
-  // const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
   const [selectedYear, setSelectedYear] = useState<string>('');
 
   const fetchRecordsAPI = `https://racingmike.com/api/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
@@ -158,7 +157,7 @@ export default function MotoResult() {
             <div className="mt-4 items-center justify-end gap-5 pb-6 sm:mt-0 sm:flex sm:px-5">
               <div className="flex gap-5">
                 <Select
-                  className="w-24"
+                  className="w-44 md:w-24"
                   label="Year"
                   placeholder="Select year"
                   searchable
@@ -179,7 +178,7 @@ export default function MotoResult() {
               </div>
               <div className="flex gap-5">
                 <Select
-                  className="w-24"
+                  className="w-44 md:w-24"
                   label="Category"
                   placeholder="Pick one"
                   onChange={setCategory}
@@ -188,7 +187,7 @@ export default function MotoResult() {
                   data={categoryList}
                 />
                 <Select
-                  className="w-24"
+                  className="w-44 md:w-24"
                   label="Sessions"
                   placeholder="Pick one"
                   onChange={setSession}

@@ -54,7 +54,7 @@ export default function NavigationHeader() {
           >
             <Group>
               <Link href="/" passHref>
-                <Image alt="logo" height={25} src="/favicon.svg" />
+                <Image alt="logo" height={25} width={25} src="/favicon.svg" />
               </Link>
             </Group>
             <Group>
@@ -88,26 +88,20 @@ export default function NavigationHeader() {
                   CONTACT
                 </Link>
               </Group>
-              {/* <Autocomplete
-                className={classes.search}
-                placeholder="Search"
-                icon={<IconSearch size="1rem" stroke={1.5} />}
-                data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
-              /> */}
             </Group>
             <Group>
               <div className="mb-6">
                 <ColorSchemeToggle />
               </div>
+              <div className="lg:hidden">
+                <Burger
+                  opened={opened}
+                  onClick={() => {
+                    setOpened(!opened);
+                  }}
+                />
+              </div>
             </Group>
-            <div className="lg:hidden">
-              <Burger
-                opened={opened}
-                onClick={() => {
-                  setOpened(!opened);
-                }}
-              />
-            </div>
           </div>
         </Header>
         <Card
@@ -118,16 +112,16 @@ export default function NavigationHeader() {
             opened ? 'block' : 'hidden'
           } absolute top-14 w-full text-center lg:hidden shadow-lg p-10 duration-300`}
         >
-          <Link href="/" className={`${classes.link}`}>
+          <Link href="/" className={`${classes.link} my-2`}>
             HOME
           </Link>
-          <Link href="/motogp-race-result" className={`${classes.link}`}>
+          <Link href="/motogp-race-result" className={`${classes.link} my-2`}>
             RACE RESULT
           </Link>
-          <Link href="/standing" className={`${classes.link}`}>
+          <Link href="/standing" className={`${classes.link} my-2`}>
             STANDING
           </Link>
-          <Link href="#" className={`${classes.link}`}>
+          <Link href="#" className={`${classes.link} my-2`}>
             CONTACT
           </Link>
         </Card>
