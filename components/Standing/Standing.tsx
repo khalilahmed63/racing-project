@@ -107,6 +107,7 @@ export default function Standing() {
                   label="Category"
                   placeholder="Pick one"
                   onChange={setCategory}
+                  value={category}
                   nothingFound="No options"
                   data={categoryList}
                 />

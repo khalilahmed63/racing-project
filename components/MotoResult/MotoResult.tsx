@@ -10,10 +10,7 @@ export default function MotoResult() {
   const [event, setEvent] = useState<any>('');
   const [session, setSession] = useState<any>('');
   // const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString());
-  const [selectedYear, setSelectedYear] = useState<string>();
-
-  console.log(event, 'event');
-  console.log(category, 'category');
+  const [selectedYear, setSelectedYear] = useState<string>('');
 
   const fetchRecordsAPI = `https://racingmike.com/api/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
     selectedYear && `&year=${selectedYear}`
@@ -157,6 +154,7 @@ export default function MotoResult() {
                   label="EVENT"
                   placeholder="Pick one"
                   onChange={setEvent}
+                  value={event}
                   nothingFound="No options"
                   data={eventList}
                 />
@@ -167,6 +165,7 @@ export default function MotoResult() {
                   label="Category"
                   placeholder="Pick one"
                   onChange={setCategory}
+                  value={category}
                   nothingFound="No options"
                   data={categoryList}
                 />
@@ -175,6 +174,7 @@ export default function MotoResult() {
                   label="Sessions"
                   placeholder="Pick one"
                   onChange={setSession}
+                  value={session}
                   nothingFound="No options"
                   data={sessionList}
                 />
