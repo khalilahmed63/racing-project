@@ -13,10 +13,8 @@ export default function MotoResult() {
   const [selectedYear, setSelectedYear] = useState<string>('');
 
   const fetchRecordsAPI = `https://racingmike.com/api/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
-    selectedYear && `&year=${selectedYear}`
-  }${event && `&eventid=${event}`}${category && `&categoryid=${category}`}${
-    session && `&session=${session}`
-  }`;
+    event && `&eventid=${event}`
+  }${category && `&categoryid=${category}`}${session && `&session=${session}`}`;
 
   const [record, setRecord] = useState<any>([]);
   const [categories, setCategories] = useState<any>([]);
@@ -68,7 +66,9 @@ export default function MotoResult() {
   const fetchEvent = async () => {
     try {
       const response = await axios.get(
-        'https://racingmike.com/api/v1.0/motogp-events?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=2023'
+        `https://racingmike.com/api/v1.0/motogp-events?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
+          selectedYear && `&year=${selectedYear}`
+        }`
       );
       setEvents(response?.data);
     } catch (error) {
@@ -79,7 +79,9 @@ export default function MotoResult() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        'https://racingmike.com/api/v1.0/motogp-category?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=2023'
+        `https://racingmike.com/api/v1.0/motogp-category?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
+          selectedYear && `&year=${selectedYear}`
+        }`
       );
       // console.log(response, 'response');
       setCategories(response?.data);
@@ -125,9 +127,11 @@ export default function MotoResult() {
   ];
 
   useEffect(() => {
+    setCategory('');
+    setEvent('');
     fetchCategories();
     fetchEvent();
-  }, []);
+  }, [selectedYear]);
 
   useEffect(() => {
     fetchRecord();

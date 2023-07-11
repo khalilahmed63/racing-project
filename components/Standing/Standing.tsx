@@ -61,9 +61,12 @@ export default function Standing() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        'https://racingmike.com/api/v1.0/motogp-category?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=2023'
+        `https://racingmike.com/api/v1.0/motogp-category?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9${
+          selectedYear && `&year=${selectedYear}`
+        }`
       );
       setCategories(response?.data);
+      console.log(response.data, 'response.data');
     } catch (error) {
       console.log(error);
     }
@@ -82,8 +85,9 @@ export default function Standing() {
   }, []);
 
   useEffect(() => {
+    setCategory('');
     fetchCategories();
-  }, []);
+  }, [selectedYear]);
 
   useEffect(() => {
     fetchRecord();
