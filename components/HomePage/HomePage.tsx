@@ -1,22 +1,11 @@
 import { Carousel } from '@mantine/carousel';
 import { Card, Image, Text } from '@mantine/core';
+import news from '../../public/jsonData/news.json';
+import schedule from '../../public/jsonData/schedule.json';
 
 export default function HomePage() {
-  const schedule = {
-    name: 'GRAND PRIX DE FRANCE',
-    sponsored_name: 'SHARK Grand Prix de France',
-    date_start: '2023-05-12',
-    date_end: '2023-05-14',
-    country_iso: 'FR',
-    country_name: 'France',
-    circuit_name: 'Le Mans',
-    circuit_place: 'Le Mans',
-    circuit_nation: 'FRA',
-    event_files_circuit_information_url:
-      'https://resources.motogp.com/files/results/2023/FRA/CircuitInformation.pdf',
-    short_name: 'FRA',
-    year: '2023',
-  };
+  console.log(news, 'news');
+  console.log(schedule, 'schedule');
 
   return (
     <div className="px-5 sm:px-0">
@@ -34,141 +23,31 @@ export default function HomePage() {
             { maxWidth: 'sm', slideSize: '100%', slideGap: 0 },
           ]}
         >
-          <Carousel.Slide>
-            <Card
-              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
-              shadow="sm"
-              withBorder
-              padding="sm"
-              component="a"
-              href="https://www.google.com/"
-              target="_blank"
-            >
-              <Card.Section>
-                <Image
-                  src="https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                  height={160}
-                  alt="No way!"
-                />
-              </Card.Section>
+          {news?.data?.map((item: any) => (
+            <Carousel.Slide key={item?.title}>
+              <Card
+                className="mx-auto max-h-64 w-full min-w-max sm:w-80"
+                shadow="sm"
+                withBorder
+                padding="sm"
+                component="a"
+                href="https://www.google.com/"
+                target="_blank"
+              >
+                <Card.Section>
+                  <Image src={item?.images} height={160} alt="Image" />
+                </Card.Section>
 
-              <Text weight={500} size="lg" mt="xs">
-                You&apos;ve won a million dollars in cash!
-              </Text>
+                <Text weight={500} size="lg" mt="xs">
+                  {item?.title.slice(0, 30)}...
+                </Text>
 
-              <Text mt={0} color="dimmed" size="sm">
-                Lorem ipsum dolor sit amet consectetur.
-              </Text>
-            </Card>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <Card
-              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
-              shadow="sm"
-              withBorder
-              padding="sm"
-              component="a"
-              href="https://www.google.com/"
-              target="_blank"
-            >
-              <Card.Section>
-                <Image
-                  src="https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                  height={160}
-                  alt="No way!"
-                />
-              </Card.Section>
-
-              <Text weight={500} size="lg" mt="xs">
-                You&apos;ve won a million dollars in cash!
-              </Text>
-
-              <Text mt={0} color="dimmed" size="sm">
-                Lorem ipsum dolor sit amet consectetur.
-              </Text>
-            </Card>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <Card
-              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
-              shadow="sm"
-              withBorder
-              padding="sm"
-              component="a"
-              href="https://www.google.com/"
-              target="_blank"
-            >
-              <Card.Section>
-                <Image
-                  src="https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                  height={160}
-                  alt="No way!"
-                />
-              </Card.Section>
-
-              <Text weight={500} size="lg" mt="xs">
-                You&apos;ve won a million dollars in cash!
-              </Text>
-
-              <Text mt={0} color="dimmed" size="sm">
-                Lorem ipsum dolor sit amet consectetur.
-              </Text>
-            </Card>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <Card
-              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
-              shadow="sm"
-              withBorder
-              padding="sm"
-              component="a"
-              href="https://www.google.com/"
-              target="_blank"
-            >
-              <Card.Section>
-                <Image
-                  src="https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                  height={160}
-                  alt="No way!"
-                />
-              </Card.Section>
-
-              <Text weight={500} size="lg" mt="xs">
-                You&apos;ve won a million dollars in cash!
-              </Text>
-
-              <Text mt={0} color="dimmed" size="sm">
-                Lorem ipsum dolor sit amet consectetur.
-              </Text>
-            </Card>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <Card
-              className="mx-auto max-h-64 w-full min-w-max sm:w-80"
-              shadow="sm"
-              withBorder
-              padding="sm"
-              component="a"
-              href="https://www.google.com/"
-              target="_blank"
-            >
-              <Card.Section>
-                <Image
-                  src="https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                  height={160}
-                  alt="No way!"
-                />
-              </Card.Section>
-
-              <Text weight={500} size="lg" mt="xs">
-                You&apos;ve won a million dollars in cash!
-              </Text>
-
-              <Text mt={0} color="dimmed" size="sm">
-                Lorem ipsum dolor sit amet consectetur.
-              </Text>
-            </Card>
-          </Carousel.Slide>
+                <Text mt={0} color="dimmed" size="sm">
+                  {item?.description.slice(0, 40)}...
+                </Text>
+              </Card>
+            </Carousel.Slide>
+          ))}
         </Carousel>
       </div>
       <div className="container mx-auto max-w-screen-xl overflow-auto pb-10">
