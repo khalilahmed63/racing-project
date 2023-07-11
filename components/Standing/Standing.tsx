@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
-import { BackgroundImage, Loader, Select, Table } from '@mantine/core';
+import { BackgroundImage, Card, Loader, Select, Table } from '@mantine/core';
 import axios from 'axios';
 import Link from 'next/link';
 
@@ -129,7 +129,7 @@ export default function Standing() {
                 />
               </div>
               <p
-                className="my-2 sm:-mb-6 cursor-pointer hover:text-blue-600"
+                className="my-2 sm:-mb-6 cursor-pointer text-blue-600"
                 onClick={() => {
                   setSelectedYear('');
                   setCategory('');
@@ -140,18 +140,6 @@ export default function Standing() {
               </p>
             </div>
           </div>
-          <div className="py-2 px-5 bg-[#1A1B1E] flex justify-between border min-w-[800px]">
-            <div className="flex">
-              <p className="text-xs text-white">TT Circuit Assen , June 25th 2023</p>
-            </div>
-            <div className="flex">
-              <p className="text-xs text-white mx-1">30º C</p>
-              <p className="text-xs text-white ml-2">Clear</p>
-              <p className="text-xs text-white ml-2">Track condition: Dry</p>
-              <p className="text-xs text-white ml-2">Humidity: 32%</p>
-              <p className="text-xs text-white ml-2">Ground: 47º</p>
-            </div>
-          </div>
           {!loading ? (
             <div>
               <>
@@ -160,35 +148,49 @@ export default function Standing() {
                     <h1 className="text-center font-bold pt-20">Record not found :(</h1>
                   </div>
                 ) : (
-                  <Table
-                    striped
-                    highlightOnHover
-                    className="max-h-96 min-w-[800px] !overflow-scroll overflow-x-auto"
-                    verticalSpacing="lg"
-                  >
-                    <thead className="my-4">
-                      <tr>
-                        <th className="">POS</th>
-                        <th className="">RIDER</th>
-                        <th className="">NATION</th>
-                        <th className="">TEAM</th>
-                        <th className="">BIKE</th>
-                        <th className="">POINTS</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {record?.map((item: any) => (
-                        <tr key={item.id} className="!py-4">
-                          <td>{item.classification_position}</td>
-                          <td>{item.classification_rider_full_name}</td>
-                          <td>{item.classification_rider_country_iso}</td>
-                          <td>{item.classification_team_name}</td>
-                          <td>{item.classification_constructor_name}</td>
-                          <td>{item.classification_points_id}</td>
+                  <Card shadow="xl" p="lg" radius="md" className="overflow-x-auto w-full">
+                    <div className="py-2 px-5 flex justify-between border w-full min-w-[800px]">
+                      <div className="flex">
+                        <p className="text-xs">TT Circuit Assen , June 25th 2023</p>
+                      </div>
+                      <div className="flex">
+                        <p className="text-xs mx-1">30º C</p>
+                        <p className="text-xs ml-2">Clear</p>
+                        <p className="text-xs ml-2">Track condition: Dry</p>
+                        <p className="text-xs ml-2">Humidity: 32%</p>
+                        <p className="text-xs ml-2">Ground: 47º</p>
+                      </div>
+                    </div>
+                    <Table
+                      striped
+                      highlightOnHover
+                      className="max-h-96 min-w-[800px] !overflow-scroll overflow-x-auto"
+                      verticalSpacing="lg"
+                    >
+                      <thead className="my-4">
+                        <tr>
+                          <th className="">POS</th>
+                          <th className="">RIDER</th>
+                          <th className="">NATION</th>
+                          <th className="">TEAM</th>
+                          <th className="">BIKE</th>
+                          <th className="">POINTS</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </Table>
+                      </thead>
+                      <tbody>
+                        {record?.map((item: any) => (
+                          <tr key={item.id} className="!py-4">
+                            <td>{item.classification_position}</td>
+                            <td>{item.classification_rider_full_name}</td>
+                            <td>{item.classification_rider_country_iso}</td>
+                            <td>{item.classification_team_name}</td>
+                            <td>{item.classification_constructor_name}</td>
+                            <td>{item.classification_points_id}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  </Card>
                 )}
               </>
             </div>

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { BackgroundImage, Loader, Select, Table } from '@mantine/core';
+import { BackgroundImage, Card, Loader, Select, Table } from '@mantine/core';
 import axios from 'axios';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -81,7 +81,7 @@ export default function MotoResult() {
       const response = await axios.get(
         'https://racingmike.com/api/v1.0/motogp-category?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=2023'
       );
-      console.log(response, 'response');
+      // console.log(response, 'response');
       setCategories(response?.data);
     } catch (error) {
       console.log(error);
@@ -111,9 +111,6 @@ export default function MotoResult() {
 
     return uniqueItem;
   }, []);
-
-  console.log(categoryList, 'categoryList');
-  console.log(eventList, 'eventList');
 
   const sessionList = [
     { value: 'RAC', label: 'RAC' },
@@ -197,7 +194,7 @@ export default function MotoResult() {
                 />
               </div>
               <p
-                className="-mb-6 cursor-pointer hover:text-blue-600"
+                className="sm:-mb-6 my-2 cursor-pointer text-blue-600"
                 onClick={() => {
                   setSelectedYear('');
                   setEvent('');
@@ -210,29 +207,31 @@ export default function MotoResult() {
               </p>
             </div>
           </div>
-          <div className="justify-between border bg-[#1A1B1E] p-2 sm:flex">
-            <div className="mb-3 flex sm:mb-0">
-              <p className="text-xs text-white">TT Circuit Assen , June 25th 2023</p>
-            </div>
-            <div className="flex">
-              <p className="mx-1 mb-3 text-xs text-white sm:mb-0">30º C</p>
-              <p className="mb-3 ml-2 text-xs text-white sm:mb-0">Clear</p>
-              <p className="mb-3 ml-2 text-xs text-white sm:mb-0">Track condition: Dry</p>
-              <p className="mb-3 ml-2 text-xs text-white sm:mb-0">Humidity: 32%</p>
-              <p className="mb-3 ml-2 text-xs text-white sm:mb-0">Ground: 47º</p>
-            </div>
-          </div>
-          {!loading ? (
-            <div>
-              {record.length < 1 ? (
-                <div className="h-96">
-                  <h1 className="pt-20 text-center font-bold">Record not found :(</h1>
+        </div>
+        {!loading ? (
+          <div>
+            {record.length < 1 ? (
+              <div className="h-96">
+                <h1 className="pt-20 text-center font-bold">Record not found :(</h1>
+              </div>
+            ) : (
+              <Card shadow="xl" p="lg" radius="md" className="overflow-x-auto w-full">
+                <div className="py-2 px-5 flex justify-between border w-full min-w-[800px]">
+                  <div className="flex">
+                    <p className="text-xs">TT Circuit Assen , June 25th 2023</p>
+                  </div>
+                  <div className="flex">
+                    <p className="text-xs mx-1">30º C</p>
+                    <p className="text-xs ml-2">Clear</p>
+                    <p className="text-xs ml-2">Track condition: Dry</p>
+                    <p className="text-xs ml-2">Humidity: 32%</p>
+                    <p className="text-xs ml-2">Ground: 47º</p>
+                  </div>
                 </div>
-              ) : (
                 <Table
                   striped
                   highlightOnHover
-                  className="max-h-96 min-w-[400px] !overflow-scroll overflow-x-auto"
+                  className="max-h-96 min-w-[800px] !overflow-scroll overflow-x-auto"
                   verticalSpacing="lg"
                 >
                   <thead className="my-4">
@@ -264,17 +263,17 @@ export default function MotoResult() {
                     ))}
                   </tbody>
                 </Table>
-              )}
+              </Card>
+            )}
+          </div>
+        ) : (
+          <>
+            <div className="flex items-center justify-center pt-10">
+              <Loader size="xl" />
             </div>
-          ) : (
-            <>
-              <div className="flex items-center justify-center pt-10">
-                <Loader size="xl" />
-              </div>
-              <div className="h-96" />
-            </>
-          )}
-        </div>
+            <div className="h-96" />
+          </>
+        )}
       </div>
     </div>
   );
