@@ -30,12 +30,28 @@ export default function Standing() {
   };
 
   const fetchRecord = async () => {
+    if (category && selectedYear) {
+      setLoading(true);
+      try {
+        const response = await axios.get(`${fetchRecordsAPI}`);
+        setRecord(response?.data);
+        setLoading(false);
+        // console.log(response, 'response');
+      } catch (error) {
+        setLoading(false);
+        console.log(error);
+      }
+    }
+  };
+
+  const clearFilter = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${fetchRecordsAPI}`);
+      const response = await axios.get(
+        'https://racingmike.com/api/v1.0/motogp-world-standing-riders?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
+      );
       setRecord(response?.data);
       setLoading(false);
-      // console.log(response, 'response');
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -117,6 +133,7 @@ export default function Standing() {
                 onClick={() => {
                   setSelectedYear('');
                   setCategory('');
+                  clearFilter();
                 }}
               >
                 Clear filter

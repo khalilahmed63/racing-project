@@ -36,9 +36,26 @@ export default function MotoResult() {
   };
 
   const fetchRecord = async () => {
+    if (category && selectedYear && session && selectedYear) {
+      setLoading(true);
+      try {
+        const response = await axios.get(`${fetchRecordsAPI}`);
+        setRecord(response?.data);
+        setLoading(false);
+        // console.log(response, 'response');
+      } catch (error) {
+        setLoading(false);
+        console.log(error);
+      }
+    }
+  };
+
+  const clearFilter = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${fetchRecordsAPI}`);
+      const response = await axios.get(
+        'https://racingmike.com/api/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
+      );
       setRecord(response?.data);
       setLoading(false);
       // console.log(response, 'response');
@@ -186,6 +203,7 @@ export default function MotoResult() {
                   setEvent('');
                   setCategory('');
                   setSession('');
+                  clearFilter();
                 }}
               >
                 Clear filter
